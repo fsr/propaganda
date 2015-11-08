@@ -1,0 +1,33 @@
+body {
+  padding-top: 50px;
+}
+
+.antrag, .erklaerungen {
+  padding: 40px 15px;
+}
+
+#kanaele label {
+  font-weight: 500;
+  padding-left: 8px;
+}
+
+#antragsteller {
+  margin-left: -7.5px;
+  margin-right: -7.5px;
+}
+
+#zeitraum {
+
+}
+
+h1 {
+  margin-left: 8%;
+  margin-bottom: 5%;
+}
+
+td[aria-expanded=true] .fa-chevron-right {
+   display: none;
+}
+td[aria-expanded=false] .fa-chevron-down {
+   display: none;
+}
