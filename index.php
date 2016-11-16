@@ -158,7 +158,6 @@
 
       <?php
 
-
         $title = "";
         $contact = "";
         $begin = "";
@@ -168,14 +167,37 @@
         $links = "";
         $extratxt = "";
 
+        if (isset($_POST['titel'])){
         $title = $_POST['titel'];
+        }
+
+        if (isset($_POST['kontakt'])){
         $contact = $_POST['kontakt'];
+        }
+
+        if (isset($_POST['begin'])){
         $begin = $_POST['begin'];
+        }
+
+        if (isset($_POST['ende'])){
         $end = $_POST['ende'];
+        }
+
+        if (isset($_POST['propagandatext'])){
         $propatxt = $_POST['propagandatext'];
+        }
+
+        if (isset($_POST['shorttext'])){
         $shorttxt = $_POST['shorttext'];
+        }
+
+        if (isset($_POST['links'])){
         $links = $_POST['links'];
-        $extratxt = $_POST['freitext'];
+        }
+
+        if (isset($_POST['freitext'])){
+
+        }
 
         if (isset($_POST['channel1'])) {
           $channelfbs = 1;
