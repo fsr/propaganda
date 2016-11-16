@@ -74,12 +74,12 @@
 
           <div class="form-group col-sm-6" id="zeitraum">
             <label for="beginn" class="col-sm-3 control-label">Beginn:</label>
-            <div class="col-sm-3 input-group">
+            <div class="col-sm-4 input-group">
               <input type="date" class="form-control" name="kontakt" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="DD.MM.YYYY">
             </div>
 
             <label for="ende" class="col-sm-3 control-label">Ende:</label>
-            <div class="col-sm-3 input-group">
+            <div class="col-sm-4 input-group">
               <input type="date" class="form-control" name="ende" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="DD.MM.YYYY">
             </div>
           </div>
@@ -161,6 +161,9 @@
       </div>
 
       <?php
+
+
+
         $title = $_POST['titel'];
         $contact = $_POST['kontakt'];
         $begin = $_POST['beginn'];
@@ -169,10 +172,77 @@
         $shorttxt = $_POST['shorttext'];
         $links = $_POST['links'];
         $fupload = $_POST['fileupload'];
-        $channels = $_POST['channels'];
         $extratxt = $_POST['freitext'];
 
-        echo $channels;
+        if (isset($_POST['channel1'])) {
+          $channelfbs = 1;
+        }
+        else {
+          $channelfbs = 0;
+        }
+
+        if (isset($_POST['channel2'])) {
+          $channelfbg = 1;
+        }
+        else {
+          $channelfbg = 0;
+        }
+
+        if (isset($_POST['channel3'])) {
+          $channelfbv = 1;
+        }
+        else {
+          $channelfbv = 0;
+        }
+
+        if (isset($_POST['channel4'])) {
+          $channeltwi = 1;
+        }
+        else {
+          $channeltwi = 0;
+        }
+
+        if (isset($_POST['channel5'])) {
+          $channelwebp = 1;
+        }
+        else {
+          $channelwebp = 0;
+        }
+
+        if (isset($_POST['channel6'])) {
+          $channelinfosc = 1;
+        }
+        else {
+          $channelinfosc = 0;
+        }
+
+        if (isset($_POST['channel7'])) {
+          $channelnews = 1;
+        }
+        else {
+          $channelnews = 0;
+        }
+
+        if (isset($_POST['channel8'])) {
+          $channelplak = 1;
+        }
+        else {
+          $channelplak = 0;
+        }
+
+        echo $channelfbs;
+        echo $channelfbg;
+
+/*
+      if (isset($channels)){
+        $count = count($channels);
+        foreach ($channels as $item){
+          echo $item . "</br>";
+          }
+      }
+      else {
+          echo "Please select Channels for your Propaganda!";
+      }*/
        ?>
 
       <div class="erklaerungen col-md-3">
