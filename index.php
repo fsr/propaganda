@@ -27,7 +27,10 @@
   </head>
 
   <body>
-
+<?php
+//$db = new SQLite3("items.sqlite");
+	//$db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, titel TEXT, antragstellerMailAdresse TEXT, image TEXT, visibility INTEGER);");
+ ?>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -72,12 +75,12 @@
           <div class="form-group col-sm-6" id="zeitraum">
             <label for="beginn" class="col-sm-3 control-label">Beginn:</label>
             <div class="col-sm-3 input-group">
-              <input type="date" class="form-control" name="kontakt">
+              <input type="date" class="form-control" name="kontakt" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="DD.MM.YYYY">
             </div>
 
             <label for="ende" class="col-sm-3 control-label">Ende:</label>
             <div class="col-sm-3 input-group">
-              <input type="date" class="form-control" name="ende">
+              <input type="date" class="form-control" name="ende" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="DD.MM.YYYY">
             </div>
           </div>
 

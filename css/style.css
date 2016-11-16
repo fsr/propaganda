@@ -31,3 +31,6 @@ td[aria-expanded=true] .fa-chevron-right {
 td[aria-expanded=false] .fa-chevron-down {
    display: none;
 }
+td[data-toggle="collapse"]{
+  cursor: pointer;
+}
