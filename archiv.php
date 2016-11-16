@@ -27,6 +27,28 @@
   </head>
 
   <body>
+    <?php /*$statement = $db->prepare('INSERT INTO items (status, title, applicantMailAdress, beginDate, endDate, propagandaText, shortText, furtherInfos, fileUrl, channelFacebookSite, channelFacebookGroups, channelFacebookEvents, channelTwitter, channelWebsite, channelInfoScreen, channelNewsletter, channelPosters, extraText, archived) VALUES (:status, :title, :applicantMailAdress, :beginDate, :endDate, :propagandaText, :shortText, :furtherInfos, :fileUrl, :channelFacebookSite, :channelFacebookGroups, :channelFacebookEvents, :channelTwitter, :channelWebsite, :channelInfoScreen, :channelNewsletter, :channelPosters, :extraText, :archived);');
+		$statement->bindValue(':status', "todo");
+    $statement->bindValue(':title', $title);
+    $statement->bindValue(':applicantMailAdress', $contact);
+    $statement->bindValue(':beginDate', $begin);
+    $statement->bindValue(':endDate', $end);
+    $statement->bindValue(':propagandaText', $propatxt);
+    $statement->bindValue(':shortText', $shorttxt);
+    $statement->bindValue(':furtherInfos', $links);
+    $statement->bindValue(':fileUrl', $fupload);
+    $statement->bindValue(':channelFacebookSite', $channelfbs);
+    $statement->bindValue(':channelFacebookGroups', $channelfbg);
+    $statement->bindValue(':channelFacebookEvents', $channelfbv);
+    $statement->bindValue(':channelTwitter', $channeltwi);
+    $statement->bindValue(':channelWebsite', $channelwebp);
+    $statement->bindValue(':channelInfoScreen', $channelinfosc);
+    $statement->bindValue(':channelNewsletter', $channelnews);
+    $statement->bindValue(':channelPosters', $channelplak);
+    $statement->bindValue(':extraText',$extratxt)
+    $statement->bindValue(':archived', 0);*/
+?>
+
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
