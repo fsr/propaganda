@@ -27,10 +27,6 @@
   </head>
 
   <body>
-<?php
-//$db = new SQLite3("items.sqlite");
-	//$db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, titel TEXT, antragstellerMailAdresse TEXT, image TEXT, visibility INTEGER);");
- ?>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -159,10 +155,21 @@
 
         </form>
       </div>
-
       <?php
+      $db = new SQLite3("items.sqlite");
+      $db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, titel TEXT, applicantMailAdress TEXT, beginDate TEXT, endDate TEXT, propagandaText TEXT, shortText TEXT,
+      furtherInfos TEXT, fileUrl TEXT, channelFacebookSite INTEGER, channelFacebookGroups INTEGER, channelFacebookEvents INTEGER, channelTwitter INTEGER, channelWebsite INTEGER,
+      channelInfoScreen INTEGER, channelNewsletter INTEGER, channelPosters INTEGER, archived INTEGER);");
 
-
+        $title = "";
+        $contact = "";
+        $begin = "";
+        $end = "";
+        $propatxt = "";
+        $shorttxt = "";
+        $links = "";
+        $fupload = "";
+        $extratxt = "";
 
         $title = $_POST['titel'];
         $contact = $_POST['kontakt'];
@@ -229,20 +236,6 @@
         else {
           $channelplak = 0;
         }
-
-        echo $channelfbs;
-        echo $channelfbg;
-
-/*
-      if (isset($channels)){
-        $count = count($channels);
-        foreach ($channels as $item){
-          echo $item . "</br>";
-          }
-      }
-      else {
-          echo "Please select Channels for your Propaganda!";
-      }*/
        ?>
 
       <div class="erklaerungen col-md-3">
