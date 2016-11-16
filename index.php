@@ -71,7 +71,7 @@
           <div class="form-group col-sm-6" id="zeitraum">
             <label for="beginn" class="col-sm-3 control-label">Beginn:</label>
             <div class="col-sm-4 input-group">
-              <input type="date" class="form-control" name="kontakt" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="DD.MM.YYYY">
+              <input type="date" class="form-control" name="begin" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="DD.MM.YYYY">
             </div>
 
             <label for="ende" class="col-sm-3 control-label">Ende:</label>
@@ -158,35 +158,6 @@
 
       <?php
 
-      $db = new SQLite3("items.sqlite");
-      $db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, status TEXT, title TEXT, applicantMailAdress TEXT, beginDate TEXT, endDate TEXT, propagandaText TEXT,
-        shortText TEXT, furtherInfos TEXT, fileUrl TEXT, channelFacebookSite INTEGER, channelFacebookGroups INTEGER, channelFacebookEvents INTEGER, channelTwitter INTEGER,
-        channelWebsite INTEGER, channelInfoScreen INTEGER, channelNewsletter INTEGER, channelPosters INTEGER, extraText TEXT, archived INTEGER);");
-
-      $statement = $db->prepare('INSERT INTO items (status, title, applicantMailAdress, beginDate, endDate, propagandaText, shortText, furtherInfos, fileUrl,
-        channelFacebookSite, channelFacebookGroups, channelFacebookEvents, channelTwitter, channelWebsite, channelInfoScreen, channelNewsletter, channelPosters,
-        extraText, archived) VALUES (:status, :title, :applicantMailAdress, :beginDate, :endDate, :propagandaText, :shortText, :furtherInfos, :fileUrl, :channelFacebookSite,
-        :channelFacebookGroups, :channelFacebookEvents, :channelTwitter, :channelWebsite, :channelInfoScreen, :channelNewsletter, :channelPosters, :extraText, :archived);');
-  		$statement->bindValue(':status', "todo");
-      $statement->bindValue(':title', $title);
-      $statement->bindValue(':applicantMailAdress', $contact);
-      $statement->bindValue(':beginDate', $begin);
-      $statement->bindValue(':endDate', $end);
-      $statement->bindValue(':propagandaText', $propatxt);
-      $statement->bindValue(':shortText', $shorttxt);
-      $statement->bindValue(':furtherInfos', $links);
-      $statement->bindValue(':fileUrl', "");
-      $statement->bindValue(':channelFacebookSite', $channelfbs);
-      $statement->bindValue(':channelFacebookGroups', $channelfbg);
-      $statement->bindValue(':channelFacebookEvents', $channelfbv);
-      $statement->bindValue(':channelTwitter', $channeltwi);
-      $statement->bindValue(':channelWebsite', $channelwebp);
-      $statement->bindValue(':channelInfoScreen', $channelinfosc);
-      $statement->bindValue(':channelNewsletter', $channelnews);
-      $statement->bindValue(':channelPosters', $channelplak);
-      $statement->bindValue(':extraText',$extratxt);
-      $statement->bindValue(':archived', 0);
-      $result = $statement->execute();
 
         $title = "";
         $contact = "";
@@ -199,7 +170,7 @@
 
         $title = $_POST['titel'];
         $contact = $_POST['kontakt'];
-        $begin = $_POST['beginn'];
+        $begin = $_POST['begin'];
         $end = $_POST['ende'];
         $propatxt = $_POST['propagandatext'];
         $shorttxt = $_POST['shorttext'];
@@ -274,6 +245,40 @@
           echo "failed";
           }
         }
+
+
+        $status = "todo";
+        $db = new SQLite3("items.sqlite");
+        $db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, status TEXT, title TEXT, applicantMailAdress TEXT, beginDate TEXT, endDate TEXT, propagandaText TEXT,
+          shortText TEXT, furtherInfos TEXT, fileUrl TEXT, channelFacebookSite INTEGER, channelFacebookGroups INTEGER, channelFacebookEvents INTEGER, channelTwitter INTEGER,
+          channelWebsite INTEGER, channelInfoScreen INTEGER, channelNewsletter INTEGER, channelPosters INTEGER, extraText TEXT, archived INTEGER);");
+
+        $statement = $db->prepare('INSERT INTO items (status, title, applicantMailAdress, beginDate, endDate, propagandaText, shortText, furtherInfos, fileUrl,
+          channelFacebookSite, channelFacebookGroups, channelFacebookEvents, channelTwitter, channelWebsite, channelInfoScreen, channelNewsletter, channelPosters,
+          extraText, archived) VALUES (:status, :title, :applicantMailAdress, :beginDate, :endDate, :propagandaText, :shortText, :furtherInfos, :fileUrl, :channelFacebookSite,
+          :channelFacebookGroups, :channelFacebookEvents, :channelTwitter, :channelWebsite, :channelInfoScreen, :channelNewsletter, :channelPosters, :extraText, :archived);');
+        $statement->bindValue(':status', $status);
+        $statement->bindValue(':title', $title);
+        $statement->bindValue(':applicantMailAdress', $contact);
+        $statement->bindValue(':beginDate', $begin);
+        $statement->bindValue(':endDate', $end);
+        $statement->bindValue(':propagandaText', $propatxt);
+        $statement->bindValue(':shortText', $shorttxt);
+        $statement->bindValue(':furtherInfos', $links);
+        $statement->bindValue(':fileUrl', "");
+        $statement->bindValue(':channelFacebookSite', $channelfbs);
+        $statement->bindValue(':channelFacebookGroups', $channelfbg);
+        $statement->bindValue(':channelFacebookEvents', $channelfbv);
+        $statement->bindValue(':channelTwitter', $channeltwi);
+        $statement->bindValue(':channelWebsite', $channelwebp);
+        $statement->bindValue(':channelInfoScreen', $channelinfosc);
+        $statement->bindValue(':channelNewsletter', $channelnews);
+        $statement->bindValue(':channelPosters', $channelplak);
+        $statement->bindValue(':extraText',$extratxt);
+        $statement->bindValue(':archived', 3);
+        $result = $statement->execute();
+        var_dump(result);
+
 
        ?>
 
