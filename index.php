@@ -146,7 +146,7 @@
 
         //Fileupload
         $uploadfile = "";
-        $uploaddir = './upload/'
+        $uploaddir = './upload/';
         $size = $_FILES['fileupload']; //Needed to compare if a file is selected for upload
 
         //Scenario for a form with a file
