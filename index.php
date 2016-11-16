@@ -254,9 +254,10 @@
         else {
           $channelplak = 0;
         }
-
+        
         $uploaddir = './upload';
         $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+
 
         if (isset($_POST['fileupload']) && $_POST['beantragen'])
         {
