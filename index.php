@@ -147,10 +147,13 @@
         //Fileupload
         $uploadfile = "";
         $uploaddir = './upload/';
-        $size=0;
+        $size=0; //Initializing size
+
+        //Checking if a file is uploaded 
         if (isset($_FILES['fileupload'])){
         $size = $_FILES['fileupload']; //Needed to compare if a file is selected for upload
         }
+
         //Scenario for a form with a file
         if ($size['size'] > 0 && isset($_POST['beantragen'])) {
             $fileName = basename($_FILES['fileupload']['name']);
