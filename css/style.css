@@ -20,6 +20,16 @@ body {
 
 }
 
+.message {
+  margin-left: 8%;
+  margin-bottom: 5%;
+  width: 94%;
+}
+
+textarea {
+  resize: vertical;
+}
+
 h1 {
   margin-left: 8%;
   margin-bottom: 5%;
