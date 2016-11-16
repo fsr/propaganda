@@ -70,7 +70,95 @@
             <th>Newsletter</th>
             <th>Plakate</th>
           </tr>
-          <tr>
+          <?php
+
+          function channelIcon ($channelStatus){
+            if($channelStatus==1){
+              return "✔";
+            } else {
+              return "✗";
+            }
+          }
+          $numberOfRow = 0;
+          //todo = ROT, inProgress = GELB, done = grün
+          $db = new SQLite3("items.sqlite");
+          $statement = $db->prepare("SELECT * FROM items WHERE archived = 0");
+          $result = $statement->execute();
+
+          while ($row = $result->fetchArray()) {
+            if(!empty($row)){
+            echo"<tr class='active'>";
+            echo" <td data-toggle='collapse' data-target='#tr".$numberOfRow."' aria-expanded='false' aria-controls='#tr".$numberOfRow."'>
+                <i class='fa fa-fw fa-chevron-right'></i>
+                <i class='fa fa-fw fa-chevron-down'></i>
+              </td>
+              <td>".$row["id"]."</td>
+              <td>".$row["title"]."</td>
+              <td><a href='mailto:".$row["applicantMailAdress"]."@ifsr.de'>".$row["applicantMailAdress"]."</a></td>
+              <td>".$row["beginDate"]."</td>
+              <td>".$row["endDate"]."</td>
+              <td>";
+              echo channelIcon($row["channelFacebookSite"]);
+              echo"</td>
+              <td>";
+              echo channelIcon($row["channelFacebookGroups"]);
+              echo"</td>
+              <td>";
+              echo channelIcon($row["channelFacebookEvents"]);
+              echo"</td>
+              <td>";
+              echo channelIcon($row["channelTwitter"]);
+              echo"</td>
+              <td>";
+              echo channelIcon($row["channelWebsite"]);
+              echo"</td>
+              <td>";
+              echo channelIcon($row["channelInfoScreen"]);
+              echo"</td>
+              <td>";
+              echo channelIcon($row["channelNewsletter"]);
+              echo"</td>
+              <td>";
+              echo channelIcon($row["channelPosters"]);
+              echo"</td>
+            </tr>
+            <tbody id='tr".$numberOfRow."' class='collapse'>
+              <tr class='active'>
+                <td></td>
+                <td colspan='13'>
+                  <p><strong>Propagandatext: </strong>
+                  ";
+                  echo $row["propagandaText"];
+                  echo"
+                  </p>
+                  <p><strong>Kurztext: </strong> ";
+                  echo $row ["shortText"];
+                  echo" </p>
+                  <p><strong>Uploads: </strong> ";
+                  if($row["fileUrl"] != ""){
+                    echo "<a href='".$row["fileUrl"]."'>File</a>";
+                  } else {
+                    echo"";
+                  }
+                  echo"</p>
+                  <p><strong>Links: </strong> -</p>
+                  <p><strong>Freitext: </strong> ";
+                  echo $row["extraText"];
+                  echo"</p>
+
+                  <p class='pull-right'>
+                    <button class='btn btn-default' type='submit'>löschen</button>
+                  </p>
+                </td>
+              </tr>
+
+            </tbody>";
+            $numberOfRow += 1;
+          }
+          }
+
+          ?>
+          <!--<tr>
             <td data-toggle="collapse" data-target="#tr5" aria-expanded="false" aria-controls="#tr5">
               <i class="fa fa-fw fa-chevron-right"></i>
               <i class="fa fa-fw fa-chevron-down"></i>
@@ -195,7 +283,7 @@
             <td>✔</td>
             <td>✗</td>
             <td>✔</td>
-          </tr>
+          </tr>-->
         </table>
       </div>
 
