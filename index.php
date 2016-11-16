@@ -159,9 +159,32 @@
       <?php
 
       $db = new SQLite3("items.sqlite");
-      $db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, status TEXT, titel TEXT, applicantMailAdress TEXT, beginDate TEXT, endDate TEXT, propagandaText TEXT, shortText TEXT,
-      furtherInfos TEXT, fileUrl TEXT, channelFacebookSite INTEGER, channelFacebookGroups INTEGER, channelFacebookEvents INTEGER, channelTwitter INTEGER, channelWebsite INTEGER,
-      channelInfoScreen INTEGER, channelNewsletter INTEGER, channelPosters INTEGER, archived INTEGER);");
+      $db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, status TEXT, title TEXT, applicantMailAdress TEXT, beginDate TEXT, endDate TEXT, propagandaText TEXT,
+        shortText TEXT, furtherInfos TEXT, fileUrl TEXT, channelFacebookSite INTEGER, channelFacebookGroups INTEGER, channelFacebookEvents INTEGER, channelTwitter INTEGER,
+        channelWebsite INTEGER, channelInfoScreen INTEGER, channelNewsletter INTEGER, channelPosters INTEGER, extraText TEXT, archived INTEGER);");
+      $statement = $db->prepare('INSERT INTO items (status, title, applicantMailAdress, beginDate, endDate, propagandaText, shortText, furtherInfos, fileUrl,
+        channelFacebookSite, channelFacebookGroups, channelFacebookEvents, channelTwitter, channelWebsite, channelInfoScreen, channelNewsletter, channelPosters,
+        extraText, archived) VALUES (:status, :title, :applicantMailAdress, :beginDate, :endDate, :propagandaText, :shortText, :furtherInfos, :fileUrl, :channelFacebookSite,
+        :channelFacebookGroups, :channelFacebookEvents, :channelTwitter, :channelWebsite, :channelInfoScreen, :channelNewsletter, :channelPosters, :extraText, :archived);');
+  		$statement->bindValue(':status', "todo");
+      $statement->bindValue(':title', $title);
+      $statement->bindValue(':applicantMailAdress', $contact);
+      $statement->bindValue(':beginDate', $begin);
+      $statement->bindValue(':endDate', $end);
+      $statement->bindValue(':propagandaText', $propatxt);
+      $statement->bindValue(':shortText', $shorttxt);
+      $statement->bindValue(':furtherInfos', $links);
+      $statement->bindValue(':fileUrl', "");
+      $statement->bindValue(':channelFacebookSite', $channelfbs);
+      $statement->bindValue(':channelFacebookGroups', $channelfbg);
+      $statement->bindValue(':channelFacebookEvents', $channelfbv);
+      $statement->bindValue(':channelTwitter', $channeltwi);
+      $statement->bindValue(':channelWebsite', $channelwebp);
+      $statement->bindValue(':channelInfoScreen', $channelinfosc);
+      $statement->bindValue(':channelNewsletter', $channelnews);
+      $statement->bindValue(':channelPosters', $channelplak);
+      $statement->bindValue(':extraText',$extratxt)
+      $statement->bindValue(':archived', 0);
 
         $title = "";
         $contact = "";
@@ -170,7 +193,6 @@
         $propatxt = "";
         $shorttxt = "";
         $links = "";
-        $fupload = "";
         $extratxt = "";
 
         $title = $_POST['titel'];
@@ -180,7 +202,6 @@
         $propatxt = $_POST['propagandatext'];
         $shorttxt = $_POST['shorttext'];
         $links = $_POST['links'];
-        $fupload = $_POST['fileupload'];
         $extratxt = $_POST['freitext'];
 
         if (isset($_POST['channel1'])) {
@@ -238,6 +259,20 @@
         else {
           $channelplak = 0;
         }
+
+        $uploaddir = './upload';
+        $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+
+        if (isset($_POST['fileupload']) && $_POST['beantragen'])
+        {
+          if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)){
+          echo "uploaded";
+          }
+          else {
+          echo "failed";
+          }
+        }
+
        ?>
 
       <div class="erklaerungen col-md-3">
