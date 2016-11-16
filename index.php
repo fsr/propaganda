@@ -37,14 +37,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">Propaganda</a>
+          <a class="navbar-brand" href="index.php">Propaganda</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.html">Antrag</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="archiv.html">Archiv</a></li>
-            <li><a href="richtlinien.html">Richtlinien</a></li>
+            <li class="active"><a href="index.php">Antrag</a></li>
+            <li><a href="register.php">Register</a></li>
+            <li><a href="archiv.php">Archiv</a></li>
+            <li><a href="richtlinien.php">Richtlinien</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -53,18 +53,18 @@
     <div class="container">
       <div class="antrag col-md-9">
         <h1>Antrag auf Propaganda</h1>
-        <form class="form-horizontal">
+        <form action="index.php" method="post" enctype="multipart/form-data" class="form-horizontal">
           <div class="form-group">
             <label for="titel" class="col-sm-3 control-label">Betrifft:</label>
             <div class="col-sm-9 input-group">
-              <input type="text" class="form-control" id="titel" placeholder="Titel">
+              <input type="text" class="form-control" name="titel" placeholder="Titel">
             </div>
           </div>
 
           <div class="form-group col-sm-6" id="antragsteller">
             <label for="kontakt" class="col-sm-6 control-label">Antragssteller:</label>
             <div class="col-sm-6 input-group">
-              <input type="text" class="form-control" id="kontakt" placeholder="Nutzer">
+              <input type="text" class="form-control" name="kontakt" placeholder="Nutzer">
               <div class="input-group-addon">@ifsr.de</div>
             </div>
           </div>
@@ -72,12 +72,12 @@
           <div class="form-group col-sm-6" id="zeitraum">
             <label for="beginn" class="col-sm-3 control-label">Beginn:</label>
             <div class="col-sm-3 input-group">
-              <input type="date" class="form-control" id="beginn">
+              <input type="date" class="form-control" name="kontakt">
             </div>
-            
+
             <label for="ende" class="col-sm-3 control-label">Ende:</label>
             <div class="col-sm-3 input-group">
-              <input type="date" class="form-control" id="ende">
+              <input type="date" class="form-control" name="ende">
             </div>
           </div>
 
@@ -105,14 +105,14 @@
           <div class="form-group">
             <label for="fileupload" class="col-sm-3 control-label sr-only">Dateiupload:</label>
             <div class="col-sm-9 input-group">
-              <input type="file" id="fileupload">
+              <input type="file" name="fileupload">
               <p class="help-block">Illustration, Aushang, etc.</p>
             </div>
           </div>
-          
+
           <div class="form-group">
             <label class="col-sm-3 control-label">Propagandakanäle:</label>
-            <div class="col-sm-9 form-group" id="kanaele">
+            <div class="col-sm-9 form-group" name="channels">
               <label>
                 <input type="checkbox"> Facebook Seite
               </label>
@@ -154,10 +154,24 @@
             </div>
           </div>
 
-          
         </form>
       </div>
-      
+
+      <?php
+        $title = $_POST['titel'];
+        $contact = $_POST['kontakt'];
+        $begin = $_POST['beginn'];
+        $end = $_POST['ende'];
+        $propatxt = $_POST['propagandatext'];
+        $shorttxt = $_POST['shorttext'];
+        $links = $_POST['links'];
+        $fupload = $_POST['fileupload'];
+        $channels = $_POST['channels'];
+        $extratxt = $_POST['freitext'];
+
+        echo $channels;
+       ?>
+
       <div class="erklaerungen col-md-3">
         <!-- Hier ist Platz für Erklärungen und Anmerkungen -->
       </div>

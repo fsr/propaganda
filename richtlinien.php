@@ -41,10 +41,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Antrag</a></li>
-            <li><a href="register.html">Register</a></li>
-            <li><a href="archiv.html">Archiv</a></li>
-            <li class="active"><a href="richtlinien.html">Richtlinien</a></li>
+            <li><a href="index.php">Antrag</a></li>
+            <li><a href="register.php">Register</a></li>
+            <li><a href="archiv.php">Archiv</a></li>
+            <li class="active"><a href="richtlinien.php">Richtlinien</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

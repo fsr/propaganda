@@ -41,10 +41,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.html">Antrag</a></li>
-            <li class="active"><a href="register.html">Register</a></li>
-            <li><a href="archiv.html">Archiv</a></li>
-            <li><a href="richtlinien.html">Richtlinien</a></li>
+            <li><a href="index.php">Antrag</a></li>
+            <li class="active"><a href="register.php">Register</a></li>
+            <li><a href="archiv.php">Archiv</a></li>
+            <li><a href="richtlinien.php">Richtlinien</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -180,7 +180,7 @@
             <td>✔</td>
             <td>✗</td>
             <td>✗</td>
-          </tr>        
+          </tr>
           <tr class="danger">
             <td data-toggle="collapse" data-target="#tr4" aria-expanded="false" aria-controls="#tr4">
               <i class="fa fa-fw fa-chevron-right"></i>
@@ -199,7 +199,7 @@
             <td>✔</td>
             <td>✔</td>
             <td>✔</td>
-          </tr>        
+          </tr>
         </table>
       </div>
 
