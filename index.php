@@ -155,9 +155,11 @@
 
         </form>
       </div>
+
       <?php
+
       $db = new SQLite3("items.sqlite");
-      $db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, titel TEXT, applicantMailAdress TEXT, beginDate TEXT, endDate TEXT, propagandaText TEXT, shortText TEXT,
+      $db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, status TEXT, titel TEXT, applicantMailAdress TEXT, beginDate TEXT, endDate TEXT, propagandaText TEXT, shortText TEXT,
       furtherInfos TEXT, fileUrl TEXT, channelFacebookSite INTEGER, channelFacebookGroups INTEGER, channelFacebookEvents INTEGER, channelTwitter INTEGER, channelWebsite INTEGER,
       channelInfoScreen INTEGER, channelNewsletter INTEGER, channelPosters INTEGER, archived INTEGER);");
 
