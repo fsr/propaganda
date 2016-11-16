@@ -260,15 +260,25 @@
 
         if (isset($_FILES['fileupload']) && isset($_POST['beantragen']))
         {
-          $uploadfile = $uploaddir . basename($_FILES['fileupload']['name']);
-          echo"upload";
-          print_r($uploadfile);
-          print_r($_FILES['fileupload']['tmp_name']);
+          $fileName = basename($_FILES['fileupload']['name']);
+
+          //echo"upload";
+          //print_r($uploadfile);
+          //print_r($_FILES['fileupload']['tmp_name']);
+
+
+          //$checkFilename =
+          while(file_exists(($uploaddir.$fileName))){
+            $fileName = "0".$fileName;
+            print_r($fileName);
+
+          }
+          $uploadfile = $uploaddir . $fileName;
           if (move_uploaded_file($_FILES['fileupload']['tmp_name'], $uploadfile)){
-          echo "uploaded";
+          echo " uploaded";
           }
           else {
-          echo "failed";
+          echo " failed";
           }
         }
 
@@ -291,7 +301,7 @@
         $statement->bindValue(':propagandaText', $propatxt);
         $statement->bindValue(':shortText', $shorttxt);
         $statement->bindValue(':furtherInfos', $links);
-        $statement->bindValue(':fileUrl', "");
+        $statement->bindValue(':fileUrl', $uploadfile);
         $statement->bindValue(':channelFacebookSite', $channelfbs);
         $statement->bindValue(':channelFacebookGroups', $channelfbg);
         $statement->bindValue(':channelFacebookEvents', $channelfbv);
@@ -301,7 +311,7 @@
         $statement->bindValue(':channelNewsletter', $channelnews);
         $statement->bindValue(':channelPosters', $channelplak);
         $statement->bindValue(':extraText',$extratxt);
-        $statement->bindValue(':archived', 3);
+        $statement->bindValue(':archived', 0);
         $result = $statement->execute();
 
 
