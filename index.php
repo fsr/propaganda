@@ -255,12 +255,15 @@
           $channelplak = 0;
         }
 
-        $uploaddir = './upload';
-        $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+        $uploaddir = './upload/';
 
-        if (isset($_POST['fileupload']) && $_POST['beantragen'])
+        if (isset($_FILES['fileupload']) && isset($_POST['beantragen']))
         {
-          if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)){
+          $uploadfile = $uploaddir . basename($_FILES['fileupload']['name']);
+          echo"upload";
+          print_r($uploadfile);
+          print_r($_FILES['fileupload']['tmp_name']);
+          if (move_uploaded_file($_FILES['fileupload']['tmp_name'], $uploadfile)){
           echo "uploaded";
           }
           else {
@@ -299,7 +302,6 @@
         $statement->bindValue(':extraText',$extratxt);
         $statement->bindValue(':archived', 3);
         $result = $statement->execute();
-        var_dump(result);
 
 
        ?>
