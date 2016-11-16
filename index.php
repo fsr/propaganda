@@ -162,6 +162,7 @@
       $db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, status TEXT, title TEXT, applicantMailAdress TEXT, beginDate TEXT, endDate TEXT, propagandaText TEXT,
         shortText TEXT, furtherInfos TEXT, fileUrl TEXT, channelFacebookSite INTEGER, channelFacebookGroups INTEGER, channelFacebookEvents INTEGER, channelTwitter INTEGER,
         channelWebsite INTEGER, channelInfoScreen INTEGER, channelNewsletter INTEGER, channelPosters INTEGER, extraText TEXT, archived INTEGER);");
+
       $statement = $db->prepare('INSERT INTO items (status, title, applicantMailAdress, beginDate, endDate, propagandaText, shortText, furtherInfos, fileUrl,
         channelFacebookSite, channelFacebookGroups, channelFacebookEvents, channelTwitter, channelWebsite, channelInfoScreen, channelNewsletter, channelPosters,
         extraText, archived) VALUES (:status, :title, :applicantMailAdress, :beginDate, :endDate, :propagandaText, :shortText, :furtherInfos, :fileUrl, :channelFacebookSite,
@@ -183,8 +184,9 @@
       $statement->bindValue(':channelInfoScreen', $channelinfosc);
       $statement->bindValue(':channelNewsletter', $channelnews);
       $statement->bindValue(':channelPosters', $channelplak);
-      $statement->bindValue(':extraText',$extratxt)
+      $statement->bindValue(':extraText',$extratxt);
       $statement->bindValue(':archived', 0);
+      $result = $statement->execute();
 
         $title = "";
         $contact = "";
