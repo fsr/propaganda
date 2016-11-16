@@ -147,8 +147,7 @@
         //Fileupload
         $uploadfile = "";
         $uploaddir = './upload/';
-        $size = isset($_FILES['fileupload']); //Needed to compare if a file is selected for upload
-
+        $size = $_FILES['fileupload']; //Needed to compare if a file is selected for upload
         //Scenario for a form with a file
         if ($size['size'] > 0 && isset($_POST['beantragen'])) {
             $fileName = basename($_FILES['fileupload']['name']);
@@ -157,7 +156,6 @@
                 $fileName = "0" . $fileName;
             }
             $uploadfile = $uploaddir . $fileName;
-
             if (move_uploaded_file($_FILES['fileupload']['tmp_name'], $uploadfile)) {
 
                 //Database
@@ -198,7 +196,7 @@
 
                 echo '<div class="alert alert-success message" role="alert">Dein Antrag ist erfolgreich eingegangen und die Datei wurde hochgeladen!</div>';
             } else {
-                echo '<div class="alert alert-danger message" role="alert">Dein Antrag konnte nicht erfolgreich eingereicht werden! Schreibe den Admins!</div>';
+                echo '<div class="alert alert-danger message" role="alert">Dein Antrag konnte nicht erfolgreich eingereicht werden! Schreibe den Admins!11elf</div>';
             }
         }
 
@@ -304,7 +302,7 @@
             </div>
 
             <div class="form-group">
-                <label for="fileupload" class="col-sm-3 control-label sr-only">Dateiupload:</label>
+                <label for="fileupload" class="col-sm-3 control-label">Dateiupload:</label>
                 <div class="col-sm-9 input-group">
                     <input type="file" name="fileupload">
                     <p class="help-block">Illustration, Aushang, etc.</p>
