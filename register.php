@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -92,18 +92,33 @@
               return "✗";
             }
           }
+
+
           $numberOfRow = 0;
           //todo = ROT, inProgress = GELB, done = grün
           $db = new SQLite3("items.sqlite");
+
+          if(isset($_POST["delete_id"])) {
+            $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
+        		$delete->bindValue(':id', $_POST['delete_id']);
+        		$result = $delete->execute();
+          }
+
+          if(isset($_POST["archive_id"])) {
+            $archive = $db->prepare('UPDATE items SET archived = 1 WHERE id = :id;');
+        		$archive->bindValue(':id', $_POST['archive_id']);
+        		$result = $archive->execute();
+          }
+
           $statement = $db->prepare("SELECT * FROM items WHERE archived = 0");
           $result = $statement->execute();
 
           while ($row = $result->fetchArray()) {
             if(!empty($row)){
-            echo"<tr class='";
+            echo "<tr class='";
                 echo rowColor($row["status"] );
             echo "'>";
-            echo" <td data-toggle='collapse' data-target='#tr".$numberOfRow."' aria-expanded='false' aria-controls='#tr".$numberOfRow."'>
+            echo " <td data-toggle='collapse' data-target='#tr".$numberOfRow."' aria-expanded='false' aria-controls='#tr".$numberOfRow."'>
                 <i class='fa fa-fw fa-chevron-right'></i>
                 <i class='fa fa-fw fa-chevron-down'></i>
               </td>
@@ -114,33 +129,33 @@
               <td>".$row["endDate"]."</td>
               <td>";
               echo channelIcon($row["channelFacebookSite"]);
-              echo"</td>
+              echo "</td>
               <td>";
               echo channelIcon($row["channelFacebookGroups"]);
-              echo"</td>
+              echo "</td>
               <td>";
               echo channelIcon($row["channelFacebookEvents"]);
-              echo"</td>
+              echo "</td>
               <td>";
               echo channelIcon($row["channelTwitter"]);
-              echo"</td>
+              echo "</td>
               <td>";
               echo channelIcon($row["channelWebsite"]);
-              echo"</td>
+              echo "</td>
               <td>";
               echo channelIcon($row["channelInfoScreen"]);
-              echo"</td>
+              echo "</td>
               <td>";
               echo channelIcon($row["channelNewsletter"]);
-              echo"</td>
+              echo "</td>
               <td>";
               echo channelIcon($row["channelPosters"]);
-              echo"</td>
+              echo "</td>
             </tr>
             <tbody id='tr".$numberOfRow."' class='collapse'>
               <tr class='";
               echo rowColor($row["status"] );
-              echo"'>
+              echo "'>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -157,7 +172,7 @@
               </tr>
               <tr class='";
               echo rowColor($row["status"] );
-              echo"'>
+              echo "'>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -167,7 +182,7 @@
                 <td></td>
                 <td>";
                 //<input type='checkbox' data-toggle='tooltip' data-placement='bottom' title='26.10.2015 14:40' checked='checked'>
-                echo"</td>
+                echo "</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -176,32 +191,42 @@
               </tr>
               <tr class='";
               echo rowColor($row["status"] );
-              echo"'>
+              echo "'>
                 <td></td>
                 <td colspan='13'>
                   <p><strong>Propagandatext: </strong>
                   ";
                   echo $row["propagandaText"];
-                  echo"
+                  echo "
                   </p>
                   <p><strong>Kurztext: </strong> ";
                   echo $row ["shortText"];
-                  echo" </p>
+                  echo "</p>
                   <p><strong>Uploads: </strong> ";
                   if($row["fileUrl"] != ""){
                     echo "<a href='".$row["fileUrl"]."'>File</a>";
                   } else {
-                    echo"";
+                    echo "";
                   }
-                  echo"</p>
+                  echo "</p>
                   <p><strong>Links: </strong> -</p>
                   <p><strong>Freitext: </strong> ";
                   echo $row["extraText"];
-                  echo"</p>
+                  echo "</p>
 
                   <p class='pull-right'>
-                    <button class='btn btn-default' type='submit'>archivieren</button>
-                    <button class='btn btn-default' type='submit'>löschen</button>
+                    <form method='post'>
+                      <input type='hidden' name='archive_id' value='";
+                      echo $row["id"];
+                      echo "' />
+                      <button class='btn btn-default' type='submit'>archivieren</button>
+                    </form>
+                    <form method='post'>
+                      <input type='hidden' name='delete_id' value='";
+                      echo $row["id"];
+                      echo "' />
+                      <button class='btn btn-default' type='submit'>löschen</button>
+                    </form>
                   </p>
                 </td>
               </tr>
@@ -212,7 +237,7 @@
           }
 
           ?>
-          
+
         </table>
       </div>
 

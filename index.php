@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -149,7 +149,7 @@
         $uploaddir = './upload/';
         $size=0; //Initializing size
 
-        //Checking if a file is uploaded 
+        //Checking if a file is uploaded
         if (isset($_FILES['fileupload'])){
         $size = $_FILES['fileupload']; //Needed to compare if a file is selected for upload
         }
@@ -254,7 +254,7 @@
         <h1>Antrag auf Propaganda</h1>
         <form action="index.php" method="post" enctype="multipart/form-data" class="form-horizontal">
             <div class="form-group">
-                <label for="titel" class="col-sm-3 control-label">Betrifft:</label>
+                <label for="titel" class="col-sm-3 control-label">Betreff:</label>
                 <div class="col-sm-9 input-group">
                     <input type="text" class="form-control" name="titel" placeholder="Titel" required>
                 </div>
