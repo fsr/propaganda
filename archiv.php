@@ -80,6 +80,8 @@
             }
           }
 
+          $db = new SQLite3("items.sqlite");
+
           if(isset($_POST["delete_id"])) {
             $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
         		$delete->bindValue(':id', $_POST['delete_id']);
@@ -88,7 +90,6 @@
 
           $numberOfRow = 0;
           //todo = ROT, inProgress = GELB, done = grün
-          $db = new SQLite3("items.sqlite");
           $statement = $db->prepare("SELECT * FROM items WHERE archived = 1");
           $result = $statement->execute();
 
@@ -168,132 +169,6 @@
           }
 
           ?>
-          <!--<tr>
-            <td data-toggle="collapse" data-target="#tr5" aria-expanded="false" aria-controls="#tr5">
-              <i class="fa fa-fw fa-chevron-right"></i>
-              <i class="fa fa-fw fa-chevron-down"></i>
-            </td>
-            <td>5</td>
-            <td>Spieleabend 23.07.2015</td>
-            <td><a href="mailto:marcel@ifsr.de">marcel</a></td>
-            <td>12.07.2015</td>
-            <td>23.07.2015</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✗</td>
-            <td>✔</td>
-          </tr>
-          <tr class="active">
-            <td data-toggle="collapse" data-target="#tr6" aria-expanded="false" aria-controls="#tr6">
-              <i class="fa fa-fw fa-chevron-right"></i>
-              <i class="fa fa-fw fa-chevron-down"></i>
-            </td>
-            <td>6</td>
-            <td>ESE 2015</td>
-            <td><a href="mailto:anita@ifsr.de">anita</a></td>
-            <td>01.09.2015</td>
-            <td>09.10.2015</td>
-            <td>✔</td>
-            <td>✗</td>
-            <td>✔</td>
-            <td>✗</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✗</td>
-            <td>✗</td>
-          </tr>
-          <tbody id="tr6" class="collapse">
-            <tr class="active">
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td colspan="2">Erledigt?</td>
-              <td><input type="checkbox" data-toggle="tooltip" data-placement="bottom" title="26.10.2015 14:23" checked="checked"></td>
-              <td></td>
-              <td><input type="checkbox" class="disabled" disabled="disabled"></td>
-              <td></td>
-              <td><input type="checkbox"></td>
-              <td><input type="checkbox"></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr class="active">
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td colspan="2">Zurückgewiesen?</td>
-              <td><input type="checkbox" class="disabled" disabled="disabled"></td>
-              <td></td>
-              <td><input type="checkbox" data-toggle="tooltip" data-placement="bottom" title="26.10.2015 14:40" checked="checked"></td>
-              <td></td>
-              <td><input type="checkbox"></td>
-              <td><input type="checkbox"></td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr class="active">
-              <td></td>
-              <td colspan="13">
-                <p><strong>Propagandatext: </strong>
-                In einer Woche ist es endlich wieder so weit: Das neue Semester beginnt und wie immer zum Wintersemester organisieren viele fleißige Helfer zusammen mit dem Fachschaftsrat die Erstsemestereinführung (ESE) 2015. Die ESE-Woche beginnt mit dem gemeinsamen Frühstück am Montag, dem 5. Oktober um 09:00 Uhr im ABP/E023. Alle weiteren Veranstaltungen finden sich im ESE-Zeitplan. Wenn du also im Oktober an der Fakultät Informatik dein Studium beginnst, komm zur ESE und du erfährst alles, was du für die nächsten Jahre wissen musst!
-
-                Wir danken schon jetzt allen, die auch in diesem Jahr wieder mithelfen, den Erstis ihren Start in das Studium so angenehm wie möglich zu machen!
-                </p>
-                <p><strong>Kurztext: </strong> -</p>
-                <p><strong>Uploads:</strong> -</p>
-                <p><strong>Links: </strong> -</p>
-                <p><strong>Freitext: </strong> -</p>
-
-                <p class="pull-right">
-                  <button class="btn btn-default" type="submit">löschen</button>
-                </p>
-              </td>
-            </tr>
-          </tbody>
-          <tr>
-            <td data-toggle="collapse" data-target="#tr7" aria-expanded="false" aria-controls="#tr7">
-              <i class="fa fa-fw fa-chevron-right"></i>
-              <i class="fa fa-fw fa-chevron-down"></i>
-            </td>
-            <td>7</td>
-            <td>Spieleabend 25.06.2015</td>
-            <td><a href="mailto:marcel@ifsr.de">marcel</a></td>
-            <td>10.06.2015</td>
-            <td>25.06.2015</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✗</td>
-            <td>✔</td>
-          </tr>
-          <tr>
-            <td data-toggle="collapse" data-target="#tr8" aria-expanded="false" aria-controls="#tr8">
-              <i class="fa fa-fw fa-chevron-right"></i>
-              <i class="fa fa-fw fa-chevron-down"></i>
-            </td>
-            <td>8</td>
-            <td>Professorenstammtisch am 30.06.2015</td>
-            <td><a href="mailto:marcel@ifsr.de">marcel</a></td>
-            <td>20.06.2015</td>
-            <td>30.06.2015</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✔</td>
-            <td>✗</td>
-            <td>✔</td>
-          </tr>-->
         </table>
       </div>
 
