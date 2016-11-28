@@ -72,16 +72,115 @@
             <th>Plakate</th>
           </tr>
           <?php
+          $numberOfRow = 0;
+          $db = new SQLite3("items.sqlite");
+
+          if(isset($_POST["update_id"])){
+            if($_POST['group1'] == 'accep1'){
+            $group1 = $db->prepare('UPDATE items SET channelFacebookSite = 1 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }else {
+            $group1 = $db->prepare('UPDATE items SET channelFacebookSite = 0 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }
+          }
+
+          if(isset($_POST["update_id"])){
+            if($_POST['group2'] == 'accep2'){
+            $group1 = $db->prepare('UPDATE items SET channelFacebookGroups = 1 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }else {
+            $group1 = $db->prepare('UPDATE items SET channelFacebookGroups = 0 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }
+          }
+
+          if(isset($_POST["update_id"])){
+            if($_POST['group3'] == 'accep3'){
+            $group1 = $db->prepare('UPDATE items SET channelFacebookEvents = 1 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }else {
+            $group1 = $db->prepare('UPDATE items SET channelFacebookEvents = 0 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }
+          }
+
+          if(isset($_POST["update_id"])){
+            if($_POST['group4'] == 'accep4'){
+            $group1 = $db->prepare('UPDATE items SET channelTwitter = 1 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }else {
+            $group1 = $db->prepare('UPDATE items SET channelTwitter = 0 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }
+          }
+
+          if(isset($_POST["update_id"])){
+            if($_POST['group5'] == 'accep5'){
+            $group1 = $db->prepare('UPDATE items SET channelWebsite = 1 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }else {
+            $group1 = $db->prepare('UPDATE items SET channelWebsite = 0 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }
+          }
+
+          if(isset($_POST["update_id"])){
+            if($_POST['group6'] == 'accep6'){
+            $group1 = $db->prepare('UPDATE items SET channelInfoScreen = 1 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }else {
+            $group1 = $db->prepare('UPDATE items SET channelInfoScreen = 0 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }
+          }
+
+          if(isset($_POST["update_id"])){
+            if($_POST['group7'] == 'accep7'){
+            $group1 = $db->prepare('UPDATE items SET channelNewsletter = 1 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }else {
+            $group1 = $db->prepare('UPDATE items SET channelNewsletter = 0 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }
+          }
+
+          if(isset($_POST["update_id"])){
+            if($_POST['group8'] == 'accep8'){
+            $group1 = $db->prepare('UPDATE items SET channelPosters = 1 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }else {
+            $group1 = $db->prepare('UPDATE items SET channelPosters = 0 WHERE id = :id;');
+            $group1->bindValue(':id', $_POST['update_id']);
+            $group1execute = $group1->execute();
+          }
+          }
+
           function rowColor($status)
           {
             if ($status == "todo") {
               return "danger";//Rot
 
             } elseif ($status == "inProgress") {
-              return "warning";
+              return "warning";//Gelb
             }
             elseif ($status == "done") {
-              return "done";
+              return "success";//Grün
             }
           }
 
@@ -94,10 +193,6 @@
           }
 
 
-          $numberOfRow = 0;
-          //todo = ROT, inProgress = GELB, done = grün
-          $db = new SQLite3("items.sqlite");
-
           if(isset($_POST["delete_id"])) {
             $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
         		$delete->bindValue(':id', $_POST['delete_id']);
@@ -108,6 +203,18 @@
             $archive = $db->prepare('UPDATE items SET archived = 1 WHERE id = :id;');
         		$archive->bindValue(':id', $_POST['archive_id']);
         		$result = $archive->execute();
+          }
+
+          if(isset($_POST["progress_id"])){
+            $progress = $db->prepare('UPDATE items SET status = "inProgress" WHERE id = :id;');
+            $progress->bindValue(':id', $_POST['progress_id']);
+            $progressexecute = $progress->execute();
+          }
+
+          if(isset($_POST["done_id"])){
+            $done = $db->prepare('UPDATE items SET status = "done" WHERE id = :id;');
+            $done->bindValue(':id', $_POST['done_id']);
+            $doneexecute = $done->execute();
           }
 
           $statement = $db->prepare("SELECT * FROM items WHERE archived = 0");
@@ -157,42 +264,6 @@
               echo rowColor($row["status"] );
               echo "'>
                 <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td colspan='2'>Erledigt?</td>
-                <td><input type='checkbox' data-toggle='tooltip' data-placement='bottom' title=''></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr class='";
-              echo rowColor($row["status"] );
-              echo "'>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td colspan='2'>Zurückgewiesen?</td>
-                <td><input type='checkbox' class='disabled'></td>
-                <td></td>
-                <td>";
-                //<input type='checkbox' data-toggle='tooltip' data-placement='bottom' title='26.10.2015 14:40' checked='checked'>
-                echo "</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr class='";
-              echo rowColor($row["status"] );
-              echo "'>
-                <td></td>
                 <td colspan='13'>
                   <p><strong>Propagandatext: </strong>
                   ";
@@ -209,33 +280,88 @@
                     echo "";
                   }
                   echo "</p>
-                  <p><strong>Links: </strong> -</p>
-                  <p><strong>Freitext: </strong> ";
-                  echo $row["extraText"];
+                  <p><strong>Links: </strong>";
+                  echo $row["furtherInfos"];
                   echo "</p>
-
-                  <p class='pull-right'>
+                  <p><strong>Freitext: </strong>";
+                  echo $row["extraText"];
+                  echo "</p></tr>
+                  <tr class='";
+                  echo rowColor($row["status"] );
+                  echo "'>
                     <form method='post'>
-                      <input type='hidden' name='archive_id' value='";
-                      echo $row["id"];
-                      echo "' />
-                      <button class='btn btn-default' type='submit'>archivieren</button>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan='2'>Angenommen</td>
+                    <td><input type='radio' name='group1' value='accep1'></td>
+                    <td><input type='radio' name='group2' value='accep2'></td>
+                    <td><input type='radio' name='group3' value='accep3'></td>
+                    <td><input type='radio' name='group4' value='accep4'></td>
+                    <td><input type='radio' name='group5' value='accep5'></td>
+                    <td><input type='radio' name='group6' value='accep6'></td>
+                    <td><input type='radio' name='group7' value='accep7'></td>
+                    <td><input type='radio' name='group8' value='accep8'></td>
+                  </tr>
+                  <tr class='";
+                  echo rowColor($row["status"] );
+                  echo "'>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td colspan='2'>Abgelehnt</td>
+                    <td><input type='radio' name='group1'></td>
+                    <td><input type='radio' name='group2'></td>
+                    <td><input type='radio' name='group3'></td>
+                    <td><input type='radio' name='group4'></td>
+                    <td><input type='radio' name='group5'></td>
+                    <td><input type='radio' name='group6'></td>
+                    <td><input type='radio' name='group7'></td>
+                    <td><input type='radio' name='group8'></td>
+                    </tr>
+
+                    <tr class='";
+                    echo rowColor($row["status"] );
+                    echo "'>
+                    <td></td>
+                    <td colspan='13'>
+                    <input type='hidden' name='update_id' value='";
+                    echo $row["id"];
+                    echo "' />
+                    <button class='btn btn-default pull-right' type='submit'>Kanäle genehmigen</button>
                     </form>
                     <form method='post'>
                       <input type='hidden' name='delete_id' value='";
                       echo $row["id"];
                       echo "' />
-                      <button class='btn btn-default' type='submit'>löschen</button>
+                      <button class='btn btn-default pull-right' type='submit'>Antrag löschen</button>
                     </form>
-                  </p>
+                    <form method='post'>
+                      <input type='hidden' name='archive_id' value='";
+                      echo $row["id"];
+                      echo "' />
+                      <button class='btn btn-default pull-right' type='submit'>Antrag archivieren</button>
+                    </form>
+                    <form method='post'>
+                      <input type='hidden' name='progress_id' value='";
+                      echo $row["id"];
+                      echo "' />
+                      <button class='btn btn-default pull-right' type='submit'>Antrag in Bearbeitung</button>
+                    </form>
+                    <form method='post'>
+                      <input type='hidden' name='done_id' value='";
+                      echo $row["id"];
+                      echo "' />
+                      <button class='btn btn-default pull-right' type='submit'>Antrag erledigt</button>
+                    </form>
                 </td>
               </tr>
-
             </tbody>";
             $numberOfRow += 1;
           }
           }
-
           ?>
 
         </table>

@@ -79,6 +79,13 @@
               return "✗";
             }
           }
+
+          if(isset($_POST["delete_id"])) {
+            $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
+        		$delete->bindValue(':id', $_POST['delete_id']);
+        		$result = $delete->execute();
+          }
+
           $numberOfRow = 0;
           //todo = ROT, inProgress = GELB, done = grün
           $db = new SQLite3("items.sqlite");
@@ -146,9 +153,12 @@
                   echo $row["extraText"];
                   echo "</p>
 
-                  <p class='pull-right'>
-                    <button class='btn btn-default' type='submit'>löschen</button>
-                  </p>
+                  <form method='post'>
+                    <input type='hidden' name='delete_id' value='";
+                    echo $row["id"];
+                    echo "' />
+                    <button class='btn btn-default pull-right' type='submit'>archivierten Antrag löschen</button>
+                  </form>
                 </td>
               </tr>
 
