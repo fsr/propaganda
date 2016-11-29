@@ -184,12 +184,18 @@
             }
           }
 
-          function channelIcon ($channelStatus){
+          function channelIcon($channelStatus){
             if($channelStatus==1){
               return "✔";
             } else {
               return "✗";
             }
+          }
+
+          function channelChecked($channelStatus) {
+            if($channelStatus==1) {
+              return true;
+            } else return false;
           }
 
 
@@ -295,14 +301,30 @@
                     <td></td>
                     <td></td>
                     <td colspan='2'>Angenommen</td>
-                    <td><input type='radio' name='group1' value='accep1' required></td>
-                    <td><input type='radio' name='group2' value='accep2' required></td>
-                    <td><input type='radio' name='group3' value='accep3' required></td>
-                    <td><input type='radio' name='group4' value='accep4' required></td>
-                    <td><input type='radio' name='group5' value='accep5' required></td>
-                    <td><input type='radio' name='group6' value='accep6' required></td>
-                    <td><input type='radio' name='group7' value='accep7' required></td>
-                    <td><input type='radio' name='group8' value='accep8' required></td>
+                    <td><input type='radio' name='group1' value='accep1' required";
+                    if(channelChecked($row["channelFacebookSite"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group2' value='accep2' required";
+                    if(channelChecked($row["channelFacebookGroups"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group3' value='accep3' required";
+                    if(channelChecked($row["channelFacebookEvents"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group4' value='accep4' required";
+                    if(channelChecked($row["channelTwitter"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group5' value='accep5' required";
+                    if(channelChecked($row["channelWebsite"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group6' value='accep6' required";
+                    if(channelChecked($row["channelInfoScreen"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group7' value='accep7' required";
+                    if(channelChecked($row["channelNewsletter"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group8' value='accep8' required";
+                    if(channelChecked($row["channelPosters"])) echo " checked='checked'";
+                    echo "></td>
                   </tr>
                   <tr class='";
                   echo rowColor($row["status"] );
@@ -312,14 +334,30 @@
                     <td></td>
                     <td></td>
                     <td colspan='2'>Abgelehnt</td>
-                    <td><input type='radio' name='group1' required></td>
-                    <td><input type='radio' name='group2' required></td>
-                    <td><input type='radio' name='group3' required></td>
-                    <td><input type='radio' name='group4' required></td>
-                    <td><input type='radio' name='group5' required></td>
-                    <td><input type='radio' name='group6' required></td>
-                    <td><input type='radio' name='group7' required></td>
-                    <td><input type='radio' name='group8' required></td>
+                    <td><input type='radio' name='group1' required";
+                    if(!channelChecked($row["channelFacebookSite"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group2' required";
+                    if(!channelChecked($row["channelFacebookGroups"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group3' required";
+                    if(!channelChecked($row["channelFacebookEvents"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group4' required";
+                    if(!channelChecked($row["channelTwitter"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group5' required";
+                    if(!channelChecked($row["channelWebsite"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group6' required";
+                    if(!channelChecked($row["channelInfoScreen"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group7' required";
+                    if(!channelChecked($row["channelNewsletter"])) echo " checked='checked'";
+                    echo "></td>
+                    <td><input type='radio' name='group8' required";
+                    if(!channelChecked($row["channelPosters"])) echo " checked='checked'";
+                    echo "></td>
                     </tr>
 
                     <tr class='";
