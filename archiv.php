@@ -149,7 +149,9 @@
                     echo "";
                   }
                   echo "</p>
-                  <p><strong>Links: </strong> -</p>
+                  <p><strong>Links: </strong>";
+                  echo $row["furtherInfos"];
+                  echo "</p>
                   <p><strong>Freitext: </strong> ";
                   echo $row["extraText"];
                   echo "</p>

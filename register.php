@@ -295,14 +295,14 @@
                     <td></td>
                     <td></td>
                     <td colspan='2'>Angenommen</td>
-                    <td><input type='radio' name='group1' value='accep1'></td>
-                    <td><input type='radio' name='group2' value='accep2'></td>
-                    <td><input type='radio' name='group3' value='accep3'></td>
-                    <td><input type='radio' name='group4' value='accep4'></td>
-                    <td><input type='radio' name='group5' value='accep5'></td>
-                    <td><input type='radio' name='group6' value='accep6'></td>
-                    <td><input type='radio' name='group7' value='accep7'></td>
-                    <td><input type='radio' name='group8' value='accep8'></td>
+                    <td><input type='radio' name='group1' value='accep1' required></td>
+                    <td><input type='radio' name='group2' value='accep2' required></td>
+                    <td><input type='radio' name='group3' value='accep3' required></td>
+                    <td><input type='radio' name='group4' value='accep4' required></td>
+                    <td><input type='radio' name='group5' value='accep5' required></td>
+                    <td><input type='radio' name='group6' value='accep6' required></td>
+                    <td><input type='radio' name='group7' value='accep7' required></td>
+                    <td><input type='radio' name='group8' value='accep8' required></td>
                   </tr>
                   <tr class='";
                   echo rowColor($row["status"] );
@@ -312,14 +312,14 @@
                     <td></td>
                     <td></td>
                     <td colspan='2'>Abgelehnt</td>
-                    <td><input type='radio' name='group1'></td>
-                    <td><input type='radio' name='group2'></td>
-                    <td><input type='radio' name='group3'></td>
-                    <td><input type='radio' name='group4'></td>
-                    <td><input type='radio' name='group5'></td>
-                    <td><input type='radio' name='group6'></td>
-                    <td><input type='radio' name='group7'></td>
-                    <td><input type='radio' name='group8'></td>
+                    <td><input type='radio' name='group1' required></td>
+                    <td><input type='radio' name='group2' required></td>
+                    <td><input type='radio' name='group3' required></td>
+                    <td><input type='radio' name='group4' required></td>
+                    <td><input type='radio' name='group5' required></td>
+                    <td><input type='radio' name='group6' required></td>
+                    <td><input type='radio' name='group7' required></td>
+                    <td><input type='radio' name='group8' required></td>
                     </tr>
 
                     <tr class='";
