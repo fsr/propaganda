@@ -85,3 +85,7 @@ fabric.properties
 # modules.xml
 # .idea/misc.xml
 # *.ipr
+
+# htaccess
+.htaccess
+.htpasswd
