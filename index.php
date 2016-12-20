@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+include 'ldapcfg.php'
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -29,41 +30,7 @@ ini_set('display_errors', 1);
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
-
 <body>
-<?php
-  $ldaphost = "placeholder"; //Hostname
-  $ldapconn = ldap_connect($ldaphost); //establish ldap connection
-  ldap_set_option($ldapconn, LDAP_OPT_PROTOCOL_VERSION, 3); //set protocol version to allow connection
-
-  if ($ldapconn){
-    $ldapbind = ldap_bind($ldapconn); //bind connection
-    //Speichern der LDAP-Gruppe finanzer
-    $ldapsearchprop = ldap_search($ldapconn, "dc=,dc=", "cn=");
-    $ldapprop = ldap_get_entries($ldapconn, $ldapsearchprop);
-    //auslesen des Gruppennamen
-    for ($i=0; $i<$ldapprop["count"]; $i++)
-    {
-      $cnprop = $ldapprop[$i]["cn"][0];
-      echo $cnprop;
-    }
-
-    //Auslesen der Usergruppe des Users
-
-  /*  $ldapsearchfsr = ldap_search($ldapconn, "dc=ifsr,dc=de", "cn=fsr");
-    $ldapfsr = ldap_get_entries($ldapconn, $ldapsearchfsr);
-
-    for ($i=0; $i<$ldapfsr["count"]; $i++)
-    {
-    $cnfsr = $ldapfsr[$i]["cn"][0];
-    echo $cnfsr;
-  }*/
-  }
-  else
-  {
-    die("Could not connect to $ldaphost");
-  }
-?>
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -79,12 +46,9 @@ ini_set('display_errors', 1);
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.php">Antrag</a></li>
-                <?php if($cnuser == $cnprop){ //Hier LDAP-Gruppe des Nutzers vergleichen
-                  echo "
-                <li><a href='register.php'>Register</a></li>
-                <li><a href='archiv.php'>Archiv</a></li>
-                <li><a href='richtlinien.php'>Richtlinien</a></li>";
-              }?>
+                <li><a href="register.php">Register</a></li>
+                <li><a href="archiv.php">Archiv</a></li>
+                <li><a href="richtlinien.php">Richtlinien</a></li>"
             </ul>
         </div><!--/.nav-collapse -->
     </div>
