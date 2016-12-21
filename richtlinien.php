@@ -1,3 +1,8 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+include 'ldapcfg.php';
+?>
 <!DOCTYPE html>
 <html lang="de">
   <head>
@@ -37,14 +42,19 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.php">Propaganda</a>
+          <a class="navbar-brand" href="antrag.php">Propaganda System des iFSR</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="index.php">Antrag</a></li>
-            <li><a href="register.php">Register</a></li>
+            <?php
+            echo '<li><a href="antrag.php">Antrag</a></li>';
+            if(in_array($username, $memberarray)){
+            echo '<li><a href="register.php">Register</a></li>
             <li><a href="archiv.php">Archiv</a></li>
             <li class="active"><a href="richtlinien.php">Richtlinien</a></li>
+            </ul><ul class="nav navbar-nav navbar-right">
+            <li><a href="logout.php">Logout</a></li>';}
+            ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
