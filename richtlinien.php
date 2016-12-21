@@ -42,7 +42,7 @@ include 'ldapcfg.php';
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="antrag.php">Propaganda System des iFSR</a>
+          <a class="navbar-brand" href="antrag.php">Propagandasystem des iFSR</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -73,17 +73,17 @@ include 'ldapcfg.php';
 
         <h3>Zurückweisungen:</h3>
         <p>
-          Das zurückweisen von Propaganda auf einzelnen Kanälen kann über das System erfolgen. Der Antragsteller sollte darüber in Kentniss gesetzt werden (bestenfalls mit einer Begründung). Dies erfolgt nicht automatisch!
+          Das Zurückweisen von Propaganda auf einzelnen Kanälen kann über das System erfolgen. Der Antragsteller sollte darüber in Kentnis gesetzt werden (bestenfalls mit einer Begründung). Dies erfolgt nicht automatisch!
         </p>
 
         <h3>Propagandakanäle:</h3>
         <p>
-          Mittels Tooltip kann bei den Checkboxen der Zeitpunkt der lezten Änderung angezeigt werden.
+          Mittels Tooltip kann bei den Checkboxen der Zeitpunkt der letzten Änderung angezeigt werden.
         </p>
 
         <h3>Archivieren vs. Löschen:</h3>
         <p>
-          Jeder Propaganda-Antrag sollte im Normalfall archiviert werden sobald das Ende der Kampagne erreicht ist oder alle Punkte abgeschlossen sind. Gelöscht werden sollten Einträge nur bei Duplikaten, Fehlern oder auf Wunsch des Antragstellers.
+          Jeder Propaganda-Antrag sollte im Normalfall archiviert werden, sobald das Ende der Kampagne erreicht ist oder alle Punkte abgeschlossen sind. Gelöscht werden sollten Einträge nur bei Duplikaten, Fehlern oder auf Wunsch des Antragstellers.
         </p>
       </div>
     </div><!-- /.container -->

@@ -14,7 +14,7 @@ session_start();
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Propaganda System des iFSR</title>
+    <title>Propagandasystem des iFSR</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +41,7 @@ session_start();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Propaganda Login System des iFSR</a>
+            <a class="navbar-brand" href="index.php">Propagandasystem des iFSR</a>
         </div>
     </div>
 </nav>

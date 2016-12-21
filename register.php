@@ -42,7 +42,7 @@ include 'ldapcfg.php';
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="antrag.php">Propaganda System des iFSR</a>
+          <a class="navbar-brand" href="antrag.php">Propagandasystem des iFSR</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -378,7 +378,7 @@ include 'ldapcfg.php';
                     <input type='hidden' name='update_id' value='";
                     echo $row["id"];
                     echo "' />
-                    <button class='btn btn-default pull-right' type='submit'>Genehmigungen setzten</button>
+                    <button class='btn btn-default pull-right' type='submit'>Genehmigungen setzen</button>
                     </form>
                     <form method='post'>
                       <input type='hidden' name='delete_id' value='";
