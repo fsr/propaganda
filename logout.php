@@ -39,7 +39,7 @@ session_destroy();
 echo "<div role='success' class='alert alert-success'>";
 echo "<strong>Sie wurden erfolgreich ausgeloggt!</strong><br/>Sie werden automatisch weitergeleitet, wenn nicht dann <a class='site' href='index.php'>hier</a> klicken.";
 echo "</div>";
-echo "<meta http-equiv='refresh' content='1; URL=index.php'/>";
+echo "<meta http-equiv='refresh' content='3; URL=index.php'/>";
 die();
 }
 ?>

@@ -50,9 +50,9 @@ include 'ldapcfg.php';
                 if(in_array($username, $memberarray)){
                 echo '<li><a href="register.php">Register</a></li>
                 <li><a href="archiv.php">Archiv</a></li>
-                <li><a href="richtlinien.php">Richtlinien</a></li>
-                </ul><ul class="nav navbar-nav navbar-right">';}
-                echo '<li><a href="logout.php">Logout</a></li>';
+                <li><a href="richtlinien.php">Richtlinien</a></li>';}
+                echo '</ul><ul class="nav navbar-nav navbar-right">
+                <li><a href="logout.php">Logout</a></li>';
                 ?>
             </ul>
         </div><!--/.nav-collapse -->
