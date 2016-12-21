@@ -273,7 +273,7 @@ include 'ldapcfg.php';
             <div class="form-group col-sm-6" id="antragsteller">
                 <label for="kontakt" class="col-sm-6 control-label">Antragssteller:</label>
                 <div class="col-sm-6 input-group">
-                    <input type="text" class="form-control" name="kontakt" placeholder="Nutzer" required>
+                    <input type="text" class="form-control" name="kontakt" value="<?php echo $_SESSION['user'];?>" required>
                     <div class="input-group-addon">@ifsr.de</div>
                 </div>
             </div>
