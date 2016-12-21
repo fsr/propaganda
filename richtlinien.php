@@ -52,8 +52,8 @@ include 'ldapcfg.php';
             echo '<li><a href="register.php">Register</a></li>
             <li><a href="archiv.php">Archiv</a></li>
             <li class="active"><a href="richtlinien.php">Richtlinien</a></li>
-            </ul><ul class="nav navbar-nav navbar-right">
-            <li><a href="logout.php">Logout</a></li>';}
+            </ul><ul class="nav navbar-nav navbar-right">'};
+            echo '<li><a href="logout.php">Logout</a></li>';
             ?>
           </ul>
         </div><!--/.nav-collapse -->

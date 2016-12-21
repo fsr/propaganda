@@ -52,8 +52,8 @@ include 'ldapcfg.php';
             echo '<li class="active"><a href="register.php">Register</a></li>
             <li><a href="archiv.php">Archiv</a></li>
             <li><a href="richtlinien.php">Richtlinien</a></li>
-            </ul><ul class="nav navbar-nav navbar-right">
-            <li><a href="logout.php">Logout</a></li>';}
+            </ul><ul class="nav navbar-nav navbar-right">'};
+            echo '<li><a href="logout.php">Logout</a></li>';
             ?>
           </ul>
         </div><!--/.nav-collapse -->
@@ -378,7 +378,7 @@ include 'ldapcfg.php';
                     <input type='hidden' name='update_id' value='";
                     echo $row["id"];
                     echo "' />
-                    <button class='btn btn-default pull-right' type='submit'>Kanäle genehmigen</button>
+                    <button class='btn btn-default pull-right' type='submit'>Genehmigungen setzten</button>
                     </form>
                     <form method='post'>
                       <input type='hidden' name='delete_id' value='";
