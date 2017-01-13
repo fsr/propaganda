@@ -47,10 +47,10 @@ include 'ldapcfg.php';
             <ul class="nav navbar-nav">
                 <?php
                 echo '<li class="active"><a href="antrag.php">Antrag</a></li>';
-                //if(in_array($username, $memberarray)){
+                if(in_array($username, $memberarray)){
                 echo '<li><a href="register.php">Register</a></li>
                 <li><a href="archiv.php">Archiv</a></li>
-                <li><a href="richtlinien.php">Richtlinien</a></li>';//}
+                <li><a href="richtlinien.php">Richtlinien</a></li>';}
                 echo '</ul><ul class="nav navbar-nav navbar-right">
                 <li><a href="logout.php">Logout</a></li>';
                 ?>
