@@ -47,10 +47,10 @@ include 'ldapcfg.php';
             <ul class="nav navbar-nav">
                 <?php
                 echo '<li class="active"><a href="antrag.php">Antrag</a></li>';
-                if(in_array($username, $memberarray)){
+                //if(in_array($username, $memberarray)){
                 echo '<li><a href="register.php">Register</a></li>
                 <li><a href="archiv.php">Archiv</a></li>
-                <li><a href="richtlinien.php">Richtlinien</a></li>';}
+                <li><a href="richtlinien.php">Richtlinien</a></li>';//}
                 echo '</ul><ul class="nav navbar-nav navbar-right">
                 <li><a href="logout.php">Logout</a></li>';
                 ?>
@@ -282,14 +282,14 @@ include 'ldapcfg.php';
                 <label for="beginn" class="col-sm-3 control-label">Beginn:</label>
                 <div class="col-sm-4 input-group">
                     <input type="date" class="form-control" name="begin"
-                           pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="DD.MM.YYYY"
+                           pattern="(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d" placeholder="DD.MM.YYYY"
                            required>
                 </div>
 
                 <label for="ende" class="col-sm-3 control-label">Ende:</label>
                 <div class="col-sm-4 input-group">
                     <input type="date" class="form-control" name="ende"
-                           pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" placeholder="DD.MM.YYYY"
+                           pattern="(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(19|20)\d\d" placeholder="DD.MM.YYYY"
                            required>
                 </div>
             </div>
