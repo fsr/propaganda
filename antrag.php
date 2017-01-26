@@ -260,10 +260,6 @@ include 'ldapcfg.php';
         } elseif ($_POST['beantragen'] = "") {
             echo '<div class="alert alert-danger message" role="alert">Dein Antrag konnte nicht erfolgreich eingereicht werden! Schreibe den Admins!</div>';
         }
-
-        if (isset($_POST['beantragen'])){
-          mail('jaster@ifsr.de', 'Test', 'Insert text here');
-        }
         ?>
 
         <h1>Antrag auf Propaganda</h1>
