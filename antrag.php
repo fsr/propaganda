@@ -48,10 +48,11 @@ include 'ldapcfg.php';
                 <?php
                 echo '<li class="active"><a href="antrag.php">Antrag</a></li>';
                 echo '<li><a href="mantrag.php">Meine Anträge</a></li>';
-                if(in_array($username, $memberarray)){
-                echo '<li><a href="register.php">Register</a></li>
+                if (in_array($username, $memberarray)) {
+                    echo '<li><a href="register.php">Register</a></li>
                 <li><a href="archiv.php">Archiv</a></li>
-                <li><a href="richtlinien.php">Richtlinien</a></li>';}
+                <li><a href="richtlinien.php">Richtlinien</a></li>';
+                }
                 echo '</ul><ul class="nav navbar-nav navbar-right">
                 <li><a href="logout.php">Logout</a></li>';
                 ?>
@@ -161,8 +162,8 @@ include 'ldapcfg.php';
         $size=0; //Initializing size
 
         //Checking if a file is uploaded
-        if (isset($_FILES['fileupload'])){
-        $size = $_FILES['fileupload']; //Needed to compare if a file is selected for upload
+        if (isset($_FILES['fileupload'])) {
+            $size = $_FILES['fileupload']; //Needed to compare if a file is selected for upload
         }
 
         //Scenario for a form with a file
@@ -260,10 +261,18 @@ include 'ldapcfg.php';
         } elseif ($_POST['beantragen'] = "") {
             echo '<div class="alert alert-danger message" role="alert">Dein Antrag konnte nicht erfolgreich eingereicht werden! Schreibe den Admins!</div>';
         }
+
+        if (!empty($_POST['beantragen'])) {
+            $message = "Hey,\nthis is your Propaganda system! Someone submitted a new Request for you!\n\nTitle:\n".$title."\n\nRequestinfo:\n".$propatxt."\n\nYou can check it out at https://propaganda.ifsr.de/";
+            $smail = $username ."@ifsr.de";
+            $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+            mail('jaster@ifsr.de', 'New Request on Propagandasystem from ' . $username, $message, $header);
+
+        }
         ?>
 
         <h1>Antrag auf Propaganda</h1>
-        <form action="antrag.php" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
             <div class="form-group">
                 <label for="titel" class="col-sm-3 control-label">Betreff:</label>
                 <div class="col-sm-9 input-group">
@@ -274,7 +283,7 @@ include 'ldapcfg.php';
             <div class="form-group col-sm-6" id="antragsteller">
                 <label for="kontakt" class="col-sm-6 control-label">Antragssteller:</label>
                 <div class="col-sm-6 input-group">
-                    <input type="text" class="form-control" name="kontakt" value="<?php echo $_SESSION['user'];?>" required>
+                    <input type="text" class="form-control" name="kontakt" value="<?php echo $_SESSION['user'];?>" readonly="readonly" required>
                     <div class="input-group-addon">@ifsr.de</div>
                 </div>
             </div>
@@ -367,7 +376,7 @@ include 'ldapcfg.php';
             <div class="form-group">
                 <label for="beantragen" class="col-sm-3 control-label sr-only">Absenden:</label>
                 <div class="col-sm-9 input-group">
-                    <button name="beantragen" type="submit" class="btn btn-default">Beantragen</button>
+                    <input name="beantragen" type="submit" class="btn btn-default" value="Beantragen"/>
                 </div>
             </div>
 
