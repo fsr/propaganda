@@ -48,6 +48,7 @@ include 'ldapcfg.php';
           <ul class="nav navbar-nav">
             <?php
             echo '<li><a href="antrag.php">Antrag</a></li>';
+            echo '<li><a href="mantrag.php">Meine Anträge</a></li>';
             if(in_array($username, $memberarray)){
             echo '<li><a href="register.php">Register</a></li>
             <li><a href="archiv.php">Archiv</a></li>

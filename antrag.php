@@ -47,6 +47,7 @@ include 'ldapcfg.php';
             <ul class="nav navbar-nav">
                 <?php
                 echo '<li class="active"><a href="antrag.php">Antrag</a></li>';
+                echo '<li><a href="mantrag.php">Meine Anträge</a></li>';
                 if(in_array($username, $memberarray)){
                 echo '<li><a href="register.php">Register</a></li>
                 <li><a href="archiv.php">Archiv</a></li>
@@ -258,6 +259,10 @@ include 'ldapcfg.php';
             echo '<div class="alert alert-success message" role="alert"> Dein Antrag ist erfolgreich eingegangen!</div>';
         } elseif ($_POST['beantragen'] = "") {
             echo '<div class="alert alert-danger message" role="alert">Dein Antrag konnte nicht erfolgreich eingereicht werden! Schreibe den Admins!</div>';
+        }
+
+        if (isset($_POST['beantragen'])){
+          mail('jaster@ifsr.de', 'Test', 'Insert text here');
         }
         ?>
 
