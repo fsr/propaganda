@@ -49,10 +49,11 @@ include 'ldapcfg.php';
             <?php
             echo '<li><a href="antrag.php">Antrag</a></li>';
             echo '<li><a href="mantrag.php">Meine Anträge</a></li>';
-            if(in_array($username, $memberarray)){
-            echo '<li class="active"><a href="register.php">Register</a></li>
+            if (in_array($username, $memberarray)) {
+                echo '<li class="active"><a href="register.php">Register</a></li>
             <li><a href="archiv.php">Archiv</a></li>
-            <li><a href="richtlinien.php">Richtlinien</a></li>';}
+            <li><a href="richtlinien.php">Richtlinien</a></li>';
+            }
             echo '</ul><ul class="nav navbar-nav navbar-right">
             <li><a href="logout.php">Logout</a></li>';
             ?>
@@ -86,163 +87,181 @@ include 'ldapcfg.php';
           $numberOfRow = 0;
           $db = new SQLite3("items.sqlite");
 
-          if(isset($_POST["update_id"])){
-            if($_POST['group1'] == 'accep1'){
-            $group1 = $db->prepare('UPDATE items SET channelFacebookSite = 1 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }else {
-            $group1 = $db->prepare('UPDATE items SET channelFacebookSite = 0 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }
-          }
-
-          if(isset($_POST["update_id"])){
-            if($_POST['group2'] == 'accep2'){
-            $group1 = $db->prepare('UPDATE items SET channelFacebookGroups = 1 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }else {
-            $group1 = $db->prepare('UPDATE items SET channelFacebookGroups = 0 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }
+          if (isset($_POST["update_id"])) {
+              if ($_POST['group1'] == 'accep1') {
+                  $group1 = $db->prepare('UPDATE items SET channelFacebookSite = 1 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              } else {
+                  $group1 = $db->prepare('UPDATE items SET channelFacebookSite = 0 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              }
           }
 
-          if(isset($_POST["update_id"])){
-            if($_POST['group3'] == 'accep3'){
-            $group1 = $db->prepare('UPDATE items SET channelFacebookEvents = 1 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }else {
-            $group1 = $db->prepare('UPDATE items SET channelFacebookEvents = 0 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }
-          }
-
-          if(isset($_POST["update_id"])){
-            if($_POST['group4'] == 'accep4'){
-            $group1 = $db->prepare('UPDATE items SET channelTwitter = 1 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }else {
-            $group1 = $db->prepare('UPDATE items SET channelTwitter = 0 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }
+          if (isset($_POST["update_id"])) {
+              if ($_POST['group2'] == 'accep2') {
+                  $group1 = $db->prepare('UPDATE items SET channelFacebookGroups = 1 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              } else {
+                  $group1 = $db->prepare('UPDATE items SET channelFacebookGroups = 0 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              }
           }
 
-          if(isset($_POST["update_id"])){
-            if($_POST['group5'] == 'accep5'){
-            $group1 = $db->prepare('UPDATE items SET channelWebsite = 1 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }else {
-            $group1 = $db->prepare('UPDATE items SET channelWebsite = 0 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }
-          }
-
-          if(isset($_POST["update_id"])){
-            if($_POST['group6'] == 'accep6'){
-            $group1 = $db->prepare('UPDATE items SET channelInfoScreen = 1 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }else {
-            $group1 = $db->prepare('UPDATE items SET channelInfoScreen = 0 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }
+          if (isset($_POST["update_id"])) {
+              if ($_POST['group3'] == 'accep3') {
+                  $group1 = $db->prepare('UPDATE items SET channelFacebookEvents = 1 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              } else {
+                  $group1 = $db->prepare('UPDATE items SET channelFacebookEvents = 0 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              }
           }
 
-          if(isset($_POST["update_id"])){
-            if($_POST['group7'] == 'accep7'){
-            $group1 = $db->prepare('UPDATE items SET channelNewsletter = 1 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }else {
-            $group1 = $db->prepare('UPDATE items SET channelNewsletter = 0 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }
+          if (isset($_POST["update_id"])) {
+              if ($_POST['group4'] == 'accep4') {
+                  $group1 = $db->prepare('UPDATE items SET channelTwitter = 1 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              } else {
+                  $group1 = $db->prepare('UPDATE items SET channelTwitter = 0 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              }
           }
 
-          if(isset($_POST["update_id"])){
-            if($_POST['group8'] == 'accep8'){
-            $group1 = $db->prepare('UPDATE items SET channelPosters = 1 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
-          }else {
-            $group1 = $db->prepare('UPDATE items SET channelPosters = 0 WHERE id = :id;');
-            $group1->bindValue(':id', $_POST['update_id']);
-            $group1execute = $group1->execute();
+          if (isset($_POST["update_id"])) {
+              if ($_POST['group5'] == 'accep5') {
+                  $group1 = $db->prepare('UPDATE items SET channelWebsite = 1 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              } else {
+                  $group1 = $db->prepare('UPDATE items SET channelWebsite = 0 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              }
           }
+
+          if (isset($_POST["update_id"])) {
+              if ($_POST['group6'] == 'accep6') {
+                  $group1 = $db->prepare('UPDATE items SET channelInfoScreen = 1 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              } else {
+                  $group1 = $db->prepare('UPDATE items SET channelInfoScreen = 0 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              }
+          }
+
+          if (isset($_POST["update_id"])) {
+              if ($_POST['group7'] == 'accep7') {
+                  $group1 = $db->prepare('UPDATE items SET channelNewsletter = 1 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              } else {
+                  $group1 = $db->prepare('UPDATE items SET channelNewsletter = 0 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              }
+          }
+
+          if (isset($_POST["update_id"])) {
+              if ($_POST['group8'] == 'accep8') {
+                  $group1 = $db->prepare('UPDATE items SET channelPosters = 1 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              } else {
+                  $group1 = $db->prepare('UPDATE items SET channelPosters = 0 WHERE id = :id;');
+                  $group1->bindValue(':id', $_POST['update_id']);
+                  $group1execute = $group1->execute();
+              }
           }
 
           function rowColor($status)
           {
-            if ($status == "todo") {
-              return "danger";//Rot
-
-            } elseif ($status == "inProgress") {
-              return "warning";//Gelb
-            }
-            elseif ($status == "done") {
-              return "success";//Grün
-            }
+              if ($status == "todo") {
+                  return "danger";//Rot
+              } elseif ($status == "inProgress") {
+                  return "warning";//Gelb
+              } elseif ($status == "done") {
+                  return "success";//Grün
+              }
           }
 
-          function channelIcon($channelStatus){
-            if($channelStatus==1){
-              return "✔";
-            } else {
-              return "✗";
-            }
+          function channelIcon($channelStatus)
+          {
+              if ($channelStatus==1) {
+                  return "✔";
+              } else {
+                  return "✗";
+              }
           }
 
-          function channelChecked($channelStatus) {
-            if($channelStatus==1) {
-              return true;
-            } else return false;
+          function channelChecked($channelStatus)
+          {
+              if ($channelStatus==1) {
+                  return true;
+              } else {
+                  return false;
+              }
           }
 
 
-          if(isset($_POST["delete_id"])) {
-            $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
-        		$delete->bindValue(':id', $_POST['delete_id']);
-        		$result = $delete->execute();
+          if (isset($_POST["delete_id"])) {
+              $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
+              $delete->bindValue(':id', $_POST['delete_id']);
+              $result = $delete->execute();
+              $smail = $username ."@ifsr.de";
+              $message = "Hey Team,\nthis is your Propaganda system!\n\nSomeone deleted a Request!\n\nYou can check it out at ".$page;
+              $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+              mail($email, '[FSR-ÖA] A Request was deleted from ' . $smail, $message, $header);
           }
 
-          if(isset($_POST["archive_id"])) {
-            $archive = $db->prepare('UPDATE items SET archived = 1 WHERE id = :id;');
-        		$archive->bindValue(':id', $_POST['archive_id']);
-        		$result = $archive->execute();
+          if (isset($_POST["archive_id"])) {
+              $archive = $db->prepare('UPDATE items SET archived = 1 WHERE id = :id;');
+              $archive->bindValue(':id', $_POST['archive_id']);
+              $result = $archive->execute();
+              $smail = $username ."@ifsr.de";
+              $message = "Hey Team,\nthis is your Propaganda system!\n\nSomeone archived a Request!\n\nYou can check it out at ".$page;
+              $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+              mail($email, '[FSR-ÖA] A Request was archived from ' . $smail, $message, $header);
           }
 
-          if(isset($_POST["progress_id"])){
-            $progress = $db->prepare('UPDATE items SET status = "inProgress" WHERE id = :id;');
-            $progress->bindValue(':id', $_POST['progress_id']);
-            $progressexecute = $progress->execute();
+          if (isset($_POST["progress_id"])) {
+              $progress = $db->prepare('UPDATE items SET status = "inProgress" WHERE id = :id;');
+              $progress->bindValue(':id', $_POST['progress_id']);
+              $progressexecute = $progress->execute();
+              $smail = $username ."@ifsr.de";
+              $message = "Hey Team,\nthis is your Propaganda system!\n\nA request was tagged as 'in Progress'!\n\nYou can check it out at ".$page;
+              $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+              mail($email, '[FSR-ÖA] A Request was tagged as inProgress from ' . $smail, $message, $header);
           }
 
-          if(isset($_POST["done_id"])){
-            $done = $db->prepare('UPDATE items SET status = "done" WHERE id = :id;');
-            $done->bindValue(':id', $_POST['done_id']);
-            $doneexecute = $done->execute();
+          if (isset($_POST["done_id"])) {
+              $done = $db->prepare('UPDATE items SET status = "done" WHERE id = :id;');
+              $done->bindValue(':id', $_POST['done_id']);
+              $doneexecute = $done->execute();
+              $smail = $username ."@ifsr.de";
+              $message = "Hey Team,\nthis is your Propaganda system!\n\nA request was tagged as 'Done' !\n\nYou can check it out at ".$page;
+              $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+              mail($email, '[FSR-ÖA] A Request was tagged as done from ' . $smail, $message, $header);
           }
 
           $statement = $db->prepare("SELECT * FROM items WHERE archived = 0");
           $result = $statement->execute();
 
           while ($row = $result->fetchArray()) {
-            if(!empty($row)){
-            echo "<tr class='";
-                echo rowColor($row["status"] );
-            echo "'>";
-            echo " <td data-toggle='collapse' data-target='#tr".$numberOfRow."' aria-expanded='false' aria-controls='#tr".$numberOfRow."'>
+              if (!empty($row)) {
+                  echo "<tr class='";
+                  echo rowColor($row["status"]);
+                  echo "'>";
+                  echo " <td data-toggle='collapse' data-target='#tr".$numberOfRow."' aria-expanded='false' aria-controls='#tr".$numberOfRow."'>
                 <i class='fa fa-fw fa-chevron-right'></i>
                 <i class='fa fa-fw fa-chevron-down'></i>
               </td>
@@ -252,34 +271,34 @@ include 'ldapcfg.php';
               <td>".$row["beginDate"]."</td>
               <td>".$row["endDate"]."</td>
               <td>";
-              echo channelIcon($row["channelFacebookSite"]);
-              echo "</td>
+                  echo channelIcon($row["channelFacebookSite"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelFacebookGroups"]);
-              echo "</td>
+                  echo channelIcon($row["channelFacebookGroups"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelFacebookEvents"]);
-              echo "</td>
+                  echo channelIcon($row["channelFacebookEvents"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelTwitter"]);
-              echo "</td>
+                  echo channelIcon($row["channelTwitter"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelWebsite"]);
-              echo "</td>
+                  echo channelIcon($row["channelWebsite"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelInfoScreen"]);
-              echo "</td>
+                  echo channelIcon($row["channelInfoScreen"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelNewsletter"]);
-              echo "</td>
+                  echo channelIcon($row["channelNewsletter"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelPosters"]);
-              echo "</td>
+                  echo channelIcon($row["channelPosters"]);
+                  echo "</td>
             </tr>
             <tbody id='tr".$numberOfRow."' class='collapse'>
               <tr class='";
-              echo rowColor($row["status"] );
-              echo "'>
+                  echo rowColor($row["status"]);
+                  echo "'>
                 <td></td>
                 <td colspan='13'>
                   <p><strong>Propagandatext: </strong>
@@ -291,10 +310,10 @@ include 'ldapcfg.php';
                   echo $row ["shortText"];
                   echo "</p>
                   <p><strong>Uploads: </strong> ";
-                  if($row["fileUrl"] != ""){
-                    echo "<a href='".$row["fileUrl"]."'>File</a>";
+                  if ($row["fileUrl"] != "") {
+                      echo "<a href='".$row["fileUrl"]."'>File</a>";
                   } else {
-                    echo "";
+                      echo "";
                   }
                   echo "</p>
                   <p><strong>Links: </strong>";
@@ -304,7 +323,7 @@ include 'ldapcfg.php';
                   echo $row["extraText"];
                   echo "</p></tr>
                   <tr class='";
-                  echo rowColor($row["status"] );
+                  echo rowColor($row["status"]);
                   echo "'>
                     <form method='post'>
                     <td></td>
@@ -313,32 +332,48 @@ include 'ldapcfg.php';
                     <td></td>
                     <td colspan='2'>Angenommen</td>
                     <td><input type='radio' name='group1' value='accep1' required";
-                    if(channelChecked($row["channelFacebookSite"])) echo " checked='checked'";
-                    echo "></td>
+                  if (channelChecked($row["channelFacebookSite"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group2' value='accep2' required";
-                    if(channelChecked($row["channelFacebookGroups"])) echo " checked='checked'";
-                    echo "></td>
+                  if (channelChecked($row["channelFacebookGroups"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group3' value='accep3' required";
-                    if(channelChecked($row["channelFacebookEvents"])) echo " checked='checked'";
-                    echo "></td>
+                  if (channelChecked($row["channelFacebookEvents"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group4' value='accep4' required";
-                    if(channelChecked($row["channelTwitter"])) echo " checked='checked'";
-                    echo "></td>
+                  if (channelChecked($row["channelTwitter"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group5' value='accep5' required";
-                    if(channelChecked($row["channelWebsite"])) echo " checked='checked'";
-                    echo "></td>
+                  if (channelChecked($row["channelWebsite"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group6' value='accep6' required";
-                    if(channelChecked($row["channelInfoScreen"])) echo " checked='checked'";
-                    echo "></td>
+                  if (channelChecked($row["channelInfoScreen"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group7' value='accep7' required";
-                    if(channelChecked($row["channelNewsletter"])) echo " checked='checked'";
-                    echo "></td>
+                  if (channelChecked($row["channelNewsletter"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group8' value='accep8' required";
-                    if(channelChecked($row["channelPosters"])) echo " checked='checked'";
-                    echo "></td>
+                  if (channelChecked($row["channelPosters"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                   </tr>
                   <tr class='";
-                  echo rowColor($row["status"] );
+                  echo rowColor($row["status"]);
                   echo "'>
                     <td></td>
                     <td></td>
@@ -346,70 +381,86 @@ include 'ldapcfg.php';
                     <td></td>
                     <td colspan='2'>Abgelehnt</td>
                     <td><input type='radio' name='group1' required";
-                    if(!channelChecked($row["channelFacebookSite"])) echo " checked='checked'";
-                    echo "></td>
+                  if (!channelChecked($row["channelFacebookSite"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group2' required";
-                    if(!channelChecked($row["channelFacebookGroups"])) echo " checked='checked'";
-                    echo "></td>
+                  if (!channelChecked($row["channelFacebookGroups"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group3' required";
-                    if(!channelChecked($row["channelFacebookEvents"])) echo " checked='checked'";
-                    echo "></td>
+                  if (!channelChecked($row["channelFacebookEvents"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group4' required";
-                    if(!channelChecked($row["channelTwitter"])) echo " checked='checked'";
-                    echo "></td>
+                  if (!channelChecked($row["channelTwitter"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group5' required";
-                    if(!channelChecked($row["channelWebsite"])) echo " checked='checked'";
-                    echo "></td>
+                  if (!channelChecked($row["channelWebsite"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group6' required";
-                    if(!channelChecked($row["channelInfoScreen"])) echo " checked='checked'";
-                    echo "></td>
+                  if (!channelChecked($row["channelInfoScreen"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group7' required";
-                    if(!channelChecked($row["channelNewsletter"])) echo " checked='checked'";
-                    echo "></td>
+                  if (!channelChecked($row["channelNewsletter"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     <td><input type='radio' name='group8' required";
-                    if(!channelChecked($row["channelPosters"])) echo " checked='checked'";
-                    echo "></td>
+                  if (!channelChecked($row["channelPosters"])) {
+                      echo " checked='checked'";
+                  }
+                  echo "></td>
                     </tr>
 
                     <tr class='";
-                    echo rowColor($row["status"] );
-                    echo "'>
+                  echo rowColor($row["status"]);
+                  echo "'>
                     <td></td>
                     <td colspan='13'>
                     <input type='hidden' name='update_id' value='";
-                    echo $row["id"];
-                    echo "' />
+                  echo $row["id"];
+                  echo "' />
                     <button class='btn btn-default pull-right' type='submit'>Genehmigungen setzen</button>
                     </form>
                     <form method='post'>
                       <input type='hidden' name='delete_id' value='";
-                      echo $row["id"];
-                      echo "' />
+                  echo $row["id"];
+                  echo "' />
                       <button class='btn btn-default pull-right' type='submit'>Antrag löschen</button>
                     </form>
                     <form method='post'>
                       <input type='hidden' name='archive_id' value='";
-                      echo $row["id"];
-                      echo "' />
+                  echo $row["id"];
+                  echo "' />
                       <button class='btn btn-default pull-right' type='submit'>Antrag archivieren</button>
                     </form>
                     <form method='post'>
                       <input type='hidden' name='progress_id' value='";
-                      echo $row["id"];
-                      echo "' />
+                  echo $row["id"];
+                  echo "' />
                       <button class='btn btn-default pull-right' type='submit'>Antrag in Bearbeitung</button>
                     </form>
                     <form method='post'>
                       <input type='hidden' name='done_id' value='";
-                      echo $row["id"];
-                      echo "' />
+                  echo $row["id"];
+                  echo "' />
                       <button class='btn btn-default pull-right' type='submit'>Antrag erledigt</button>
                     </form>
                 </td>
               </tr>
             </tbody>";
-            $numberOfRow += 1;
-          }
+                  $numberOfRow += 1;
+              }
           }
           ?>
 

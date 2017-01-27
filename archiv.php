@@ -97,6 +97,10 @@ include 'ldapcfg.php';
             $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
         		$delete->bindValue(':id', $_POST['delete_id']);
         		$result = $delete->execute();
+            $smail = $username ."@ifsr.de";
+            $message = "Hey Team,\nthis is your Propaganda system!\n\nA request was deleted in your archiv !\n\nYou can check it out at ".$page;
+            $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+            mail($email, '[FSR-ÖA] A Request was deleted in your archiv from ' . $smail, $message, $header);
           }
 
           $numberOfRow = 0;

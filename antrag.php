@@ -264,7 +264,7 @@ include 'ldapcfg.php';
 
         if (!empty($_POST['beantragen'])) {
             $smail = $username ."@ifsr.de";
-            $message = "Hey Team,\nthis is your Propaganda system! Someone submitted a new Request for you!\n\nHere's the core data:\n\nStartdate:\n".$begin."\n\nEnddate:\n".$end."\n\nTitle:\n".$title."\n\nRequestinfo:\n".$propatxt."\n\nYou can check it out at https://propaganda.ifsr.de/";
+            $message = "Hey Team,\nthis is your Propaganda system! Someone submitted a new Request for you!\n\nHere's the core data:\n\nStartdate:\n".$begin."\n\nEnddate:\n".$end."\n\nTitle:\n".$title."\n\nRequestinfo:\n".$propatxt."\n\nYou can check it out at ".$page;
             $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
             mail($email, '[FSR-ÖA] New Request on Propagandasystem from ' . $smail, $message, $header);
         }
