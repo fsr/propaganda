@@ -49,10 +49,11 @@ include 'ldapcfg.php';
             <?php
             echo '<li><a href="antrag.php">Antrag</a></li>';
             echo '<li><a href="mantrag.php">Meine Anträge</a></li>';
-            if(in_array($username, $memberarray)){
-            echo '<li><a href="register.php">Register</a></li>
+            if (in_array($username, $memberarray)) {
+                echo '<li><a href="register.php">Register</a></li>
             <li><a href="archiv.php">Archiv</a></li>
-            <li class="active"><a href="richtlinien.php">Richtlinien</a></li>';}
+            <li class="active"><a href="richtlinien.php">Richtlinien</a></li>';
+            }
             echo '</ul><ul class="nav navbar-nav navbar-right">
             <li><a href="logout.php">Logout</a></li>';
             ?>

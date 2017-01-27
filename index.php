@@ -59,17 +59,17 @@ session_start();
         <button class="btn btn-lg btn-primary btn-block" name="senden" type="submit">Sign in</button>
       </form>
       <?php
-      if (isset($_POST['username'])){
-        $username = $_POST['username'];
+      if (isset($_POST['username'])) {
+          $username = $_POST['username'];
       }
-      if (isset($_POST['password'])){
-        $password = $_POST['password'];
+      if (isset($_POST['password'])) {
+          $password = $_POST['password'];
       }
-        if(isset($_POST["senden"])){
-        $_SESSION['user']=$_POST['username'];
-        $_SESSION['password']=$_POST['password'];
-        echo "<meta http-equiv='refresh' content='1; URL=antrag.php'/>";
-      }
+        if (isset($_POST["senden"])) {
+            $_SESSION['user']=$_POST['username'];
+            $_SESSION['password']=$_POST['password'];
+            echo "<meta http-equiv='refresh' content='1; URL=antrag.php'/>";
+        }
        ?>
   </div>
   <div class="col-xs-3">

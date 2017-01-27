@@ -48,10 +48,11 @@ include 'ldapcfg.php';
             <?php
             echo '<li><a href="antrag.php">Antrag</a></li>';
             echo '<li><a href="mantrag.php">Meine Anträge</a></li>';
-            if(in_array($username, $memberarray)){
-            echo '<li><a href="register.php">Register</a></li>
+            if (in_array($username, $memberarray)) {
+                echo '<li><a href="register.php">Register</a></li>
             <li class="active"><a href="archiv.php">Archiv</a></li>
-            <li><a href="richtlinien.php">Richtlinien</a></li>';}
+            <li><a href="richtlinien.php">Richtlinien</a></li>';
+            }
             echo '</ul><ul class="nav navbar-nav navbar-right">
             <li><a href="logout.php">Logout</a></li>';
             ?>
@@ -83,24 +84,25 @@ include 'ldapcfg.php';
           </tr>
           <?php
 
-          function channelIcon ($channelStatus){
-            if($channelStatus==1){
-              return "✔";
-            } else {
-              return "✗";
-            }
+          function channelIcon($channelStatus)
+          {
+              if ($channelStatus==1) {
+                  return "✔";
+              } else {
+                  return "✗";
+              }
           }
 
           $db = new SQLite3("items.sqlite");
 
-          if(isset($_POST["delete_id"])) {
-            $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
-        		$delete->bindValue(':id', $_POST['delete_id']);
-        		$result = $delete->execute();
-            $smail = $username ."@ifsr.de";
-            $message = "Hey Team,\nthis is your Propaganda system!\n\nA request was deleted in your archiv !\n\nYou can check it out at ".$page;
-            $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-            mail($email, '[FSR-ÖA] A Request was deleted in your archiv from ' . $smail, $message, $header);
+          if (isset($_POST["delete_id"])) {
+              $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
+              $delete->bindValue(':id', $_POST['delete_id']);
+              $result = $delete->execute();
+              $smail = $username ."@ifsr.de";
+              $message = "Hey Team,\nthis is your Propaganda system!\n\nA request was deleted in your archiv !\n\nYou can check it out at ".$page;
+              $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+              mail($email, '[FSR-ÖA] A Request was deleted in your archiv from ' . $smail, $message, $header);
           }
 
           $numberOfRow = 0;
@@ -109,9 +111,9 @@ include 'ldapcfg.php';
           $result = $statement->execute();
 
           while ($row = $result->fetchArray()) {
-            if(!empty($row)){
-            echo "<tr class='active'>";
-            echo "<td data-toggle='collapse' data-target='#tr".$numberOfRow."' aria-expanded='false' aria-controls='#tr".$numberOfRow."'>
+              if (!empty($row)) {
+                  echo "<tr class='active'>";
+                  echo "<td data-toggle='collapse' data-target='#tr".$numberOfRow."' aria-expanded='false' aria-controls='#tr".$numberOfRow."'>
                 <i class='fa fa-fw fa-chevron-right'></i>
                 <i class='fa fa-fw fa-chevron-down'></i>
               </td>
@@ -121,29 +123,29 @@ include 'ldapcfg.php';
               <td>".$row["beginDate"]."</td>
               <td>".$row["endDate"]."</td>
               <td>";
-              echo channelIcon($row["channelFacebookSite"]);
-              echo "</td>
+                  echo channelIcon($row["channelFacebookSite"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelFacebookGroups"]);
-              echo "</td>
+                  echo channelIcon($row["channelFacebookGroups"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelFacebookEvents"]);
-              echo "</td>
+                  echo channelIcon($row["channelFacebookEvents"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelTwitter"]);
-              echo "</td>
+                  echo channelIcon($row["channelTwitter"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelWebsite"]);
-              echo "</td>
+                  echo channelIcon($row["channelWebsite"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelInfoScreen"]);
-              echo "</td>
+                  echo channelIcon($row["channelInfoScreen"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelNewsletter"]);
-              echo "</td>
+                  echo channelIcon($row["channelNewsletter"]);
+                  echo "</td>
               <td>";
-              echo channelIcon($row["channelPosters"]);
-              echo "</td>
+                  echo channelIcon($row["channelPosters"]);
+                  echo "</td>
             </tr>
             <tbody id='tr".$numberOfRow."' class='collapse'>
               <tr class='active'>
@@ -158,10 +160,10 @@ include 'ldapcfg.php';
                   echo $row ["shortText"];
                   echo " </p>
                   <p><strong>Uploads: </strong> ";
-                  if($row["fileUrl"] != ""){
-                    echo "<a href='".$row["fileUrl"]."'>File</a>";
+                  if ($row["fileUrl"] != "") {
+                      echo "<a href='".$row["fileUrl"]."'>File</a>";
                   } else {
-                    echo "";
+                      echo "";
                   }
                   echo "</p>
                   <p><strong>Links: </strong>";
@@ -173,16 +175,16 @@ include 'ldapcfg.php';
 
                   <form method='post'>
                     <input type='hidden' name='delete_id' value='";
-                    echo $row["id"];
-                    echo "' />
+                  echo $row["id"];
+                  echo "' />
                     <button class='btn btn-default pull-right' type='submit'>archivierten Antrag löschen</button>
                   </form>
                 </td>
               </tr>
 
             </tbody>";
-            $numberOfRow += 1;
-          }
+                  $numberOfRow += 1;
+              }
           }
 
           ?>
