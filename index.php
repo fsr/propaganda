@@ -58,6 +58,7 @@ session_start();
         <input type="password" name="password" class="form-control" placeholder="Password" required/><br/><br/>
         <button class="btn btn-lg btn-primary btn-block" name="senden" type="submit">Sign in</button>
       </form>
+      <br/><br/>
       <?php
       if (isset($_POST['username'])) {
           $username = $_POST['username'];
@@ -68,7 +69,10 @@ session_start();
         if (isset($_POST["senden"])) {
             $_SESSION['user']=$_POST['username'];
             $_SESSION['password']=$_POST['password'];
-            echo "<meta http-equiv='refresh' content='1; URL=antrag.php'/>";
+            echo "<div role='success' class='alert alert-success'>";
+            echo "<strong>Sie werden nun weitergeleitet, wenn nicht dann <a class='site' href='antrag.php'>hier</a> klicken.</strong>";
+            echo "</div>";
+            echo "<meta http-equiv='refresh' content='2; URL=antrag.php'/>";
         }
        ?>
   </div>
