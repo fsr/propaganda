@@ -41,7 +41,7 @@ session_start();
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Propagandasystem des iFSR</a>
+            <a class="navbar-brand" href="index.php">Propagandasystem des <br class="rwd-break"> iFSR<br class="rwd-break"></a>
         </div>
     </div>
 </nav>

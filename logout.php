@@ -31,9 +31,7 @@ if (isset($_SESSION['user'])) {
 </head>
 <body>
 <div class="container">
-<div class="col-md-12">
-<div class="col-xs-4"></div>
-<div class="col-xs-4">
+<div class="col-xs-12">
 <?php
 echo "<div role='success' class='alert alert-success'>";
     echo "<strong>Sie wurden erfolgreich ausgeloggt!</strong><br/>Sie werden automatisch weitergeleitet, wenn nicht dann <a class='site' href='index.php'>hier</a> klicken.";
@@ -43,7 +41,6 @@ echo "<div role='success' class='alert alert-success'>";
 }
 ?>
 </div>
-<div class="col-xs-4"></div>
 </div>
 </body>
 </html>

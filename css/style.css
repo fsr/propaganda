@@ -44,3 +44,7 @@ td[aria-expanded=false] .fa-chevron-down {
 td[data-toggle="collapse"]{
   cursor: pointer;
 }
+@media screen and (min-width: 768px){
+   .rwd-break { display: none; }
+   .navbar-brand {padding: 15px};
+}
