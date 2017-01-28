@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-session_start();
+include ('login.php');
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -51,7 +51,7 @@ session_start();
   <div class="col-xs-3">
   </div>
   <div class="col-xs-6">
-      <form class="form-signin" action="index.php" method="post">
+      <form class="form-signin" method="post" action="">
         <label class="sr-only">Username</label>
         <input type="input" name="username" class="form-control" placeholder="Username" required autofocus/>
         <label for="inputPassword" class="sr-only">Password</label>
@@ -59,22 +59,6 @@ session_start();
         <button class="btn btn-lg btn-primary btn-block" name="senden" type="submit">Sign in</button>
       </form>
       <br/><br/>
-      <?php
-      if (isset($_POST['username'])) {
-          $username = $_POST['username'];
-      }
-      if (isset($_POST['password'])) {
-          $password = $_POST['password'];
-      }
-        if (isset($_POST["senden"])) {
-            $_SESSION['user']=$_POST['username'];
-            $_SESSION['password']=$_POST['password'];
-            echo "<div role='success' class='alert alert-success'>";
-            echo "<strong>Sie werden nun weitergeleitet, wenn nicht dann <a class='site' href='antrag.php'>hier</a> klicken.</strong>";
-            echo "</div>";
-            echo "<meta http-equiv='refresh' content='2; URL=antrag.php'/>";
-        }
-       ?>
   </div>
   <div class="col-xs-3">
   </div>
