@@ -41,7 +41,7 @@ include ('login.php');
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php">Propagandasystem des <br class="rwd-break"> iFSR<br class="rwd-break"></a>
+            <a class="navbar-brand" href="index.php">Propagandasystem<br class="rwd-break">des iFSR<br class="rwd-break"></a>
         </div>
     </div>
 </nav>
