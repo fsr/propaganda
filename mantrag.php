@@ -63,7 +63,7 @@ include 'ldapcfg.php';
 
   <div class="container">
     <div class="antrag col-md-12">
-      <h1>Propaganda Register</h1>
+      <h1>Propaganda Meine Anträge</h1>
 
       <table class="table">
         <tr>
