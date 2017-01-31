@@ -41,7 +41,7 @@ include 'ldapcfg.php';
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">Propagandasystem des <br class="rwd-break"> iFSR<br class="rwd-break"></a>
+        <a class="navbar-brand" href="index.php">Propagandasystem <br class="rwd-break">des iFSR<br class="rwd-break"></a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
@@ -65,6 +65,20 @@ include 'ldapcfg.php';
     <div class="antrag col-md-12">
       <h1>Propaganda Meine Anträge</h1>
 
+      <?php
+      $numberOfRow = 0;
+      $db = new SQLite3("items.sqlite");
+
+      $checksum = $db->prepare("SELECT count(*) FROM items WHERE archived=0 AND applicantMailAdress='$username'");
+      $empty = $checksum->execute();
+      $rew = $empty->fetchArray();
+
+      if ($rew['count(*)'] == 0) {
+          echo "<div role='danger' class='alert alert-danger'>";
+          echo "<strong>Sie haben bisher keine Anträge eingereicht!</strong><br/>Klicken sie <a class='site' href='antrag.php'>hier</a> um einen Antrag einzureichen.";
+          echo "</div>";
+      } else {
+          echo '
       <table class="table">
         <tr>
           <th></th>
@@ -81,50 +95,48 @@ include 'ldapcfg.php';
           <th>Infoscreen</th>
           <th>Newsletter</th>
           <th>Plakate</th>
-        </tr>
-        <?php
-        $numberOfRow = 0;
-        $db = new SQLite3("items.sqlite");
+        </tr>';
 
-        function rowColor($status)
-        {
-            if ($status == "todo") {
-                return "danger";//Rot
-            } elseif ($status == "inProgress") {
-                return "warning";//Gelb
-            } elseif ($status == "done") {
-                return "success";//Grün
-            }
-        }
+          function rowColor($status)
+          {
+              if ($status == "todo") {
+                  return "danger";//Rot
+              } elseif ($status == "inProgress") {
+                  return "warning";//Gelb
+              } elseif ($status == "done") {
+                  return "success";//Grün
+              }
+          }
 
-        function channelIcon($channelStatus)
-        {
-            if ($channelStatus==1) {
-                return "✔";
-            } else {
-                return "✗";
-            }
-        }
+          function channelIcon($channelStatus)
+          {
+              if ($channelStatus==1) {
+                  return "✔";
+              } else {
+                  return "✗";
+              }
+          }
 
-        function channelChecked($channelStatus)
-        {
-            if ($channelStatus==1) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+          function channelChecked($channelStatus)
+          {
+              if ($channelStatus==1) {
+                  return true;
+              } else {
+                  return false;
+              }
+          }
 
-        $statement = $db->prepare("SELECT * FROM items WHERE archived = 0");
-        $result = $statement->execute();
+          $statement = $db->prepare("SELECT * FROM items WHERE archived = 0");
+          $result = $statement->execute();
 
-        while ($row = $result->fetchArray()) {
-            if (!empty($row)) {
-                if ($username == $row['applicantMailAdress']) {
-                    echo "<tr class='";
-                    echo rowColor($row["status"]);
-                    echo "'>";
-                    echo " <td data-toggle='collapse' data-target='#tr".$numberOfRow."' aria-expanded='false' aria-controls='#tr".$numberOfRow."'>
+          while ($row = $result->fetchArray()) {
+              print_r($row);
+              if (!empty($row)) {
+                  if ($username == $row['applicantMailAdress']) {
+                      echo "<tr class='";
+                      echo rowColor($row["status"]);
+                      echo "'>";
+                      echo " <td data-toggle='collapse' data-target='#tr".$numberOfRow."' aria-expanded='false' aria-controls='#tr".$numberOfRow."'>
               <i class='fa fa-fw fa-chevron-right'></i>
               <i class='fa fa-fw fa-chevron-down'></i>
             </td>
@@ -134,60 +146,60 @@ include 'ldapcfg.php';
             <td>".$row["beginDate"]."</td>
             <td>".$row["endDate"]."</td>
             <td>";
-                    echo channelIcon($row["channelFacebookSite"]);
-                    echo "</td>
+                      echo channelIcon($row["channelFacebookSite"]);
+                      echo "</td>
             <td>";
-                    echo channelIcon($row["channelFacebookGroups"]);
-                    echo "</td>
+                      echo channelIcon($row["channelFacebookGroups"]);
+                      echo "</td>
             <td>";
-                    echo channelIcon($row["channelFacebookEvents"]);
-                    echo "</td>
+                      echo channelIcon($row["channelFacebookEvents"]);
+                      echo "</td>
             <td>";
-                    echo channelIcon($row["channelTwitter"]);
-                    echo "</td>
+                      echo channelIcon($row["channelTwitter"]);
+                      echo "</td>
             <td>";
-                    echo channelIcon($row["channelWebsite"]);
-                    echo "</td>
+                      echo channelIcon($row["channelWebsite"]);
+                      echo "</td>
             <td>";
-                    echo channelIcon($row["channelInfoScreen"]);
-                    echo "</td>
+                      echo channelIcon($row["channelInfoScreen"]);
+                      echo "</td>
             <td>";
-                    echo channelIcon($row["channelNewsletter"]);
-                    echo "</td>
+                      echo channelIcon($row["channelNewsletter"]);
+                      echo "</td>
             <td>";
-                    echo channelIcon($row["channelPosters"]);
-                    echo "</td>
+                      echo channelIcon($row["channelPosters"]);
+                      echo "</td>
           </tr>
           <tbody id='tr".$numberOfRow."' class='collapse'>
             <tr class='";
-                    echo rowColor($row["status"]);
-                    echo "'>
+                      echo rowColor($row["status"]);
+                      echo "'>
               <td></td>
               <td colspan='13'>
                 <p><strong>Propagandatext: </strong>
                 ";
-                    echo $row["propagandaText"];
-                    echo "
+                      echo $row["propagandaText"];
+                      echo "
                 </p>
                 <p><strong>Kurztext: </strong> ";
-                    echo $row ["shortText"];
-                    echo "</p>
+                      echo $row ["shortText"];
+                      echo "</p>
                 <p><strong>Uploads: </strong> ";
-                    if ($row["fileUrl"] != "") {
-                        echo "<a href='".$row["fileUrl"]."'>File</a>";
-                    } else {
-                        echo "";
-                    }
-                    echo "</p>
+                      if ($row["fileUrl"] != "") {
+                          echo "<a href='".$row["fileUrl"]."'>File</a>";
+                      } else {
+                          echo "";
+                      }
+                      echo "</p>
                 <p><strong>Links: </strong>";
-                    echo $row["furtherInfos"];
-                    echo "</p>
+                      echo $row["furtherInfos"];
+                      echo "</p>
                 <p><strong>Freitext: </strong>";
-                    echo $row["extraText"];
-                    echo "</p></tr>
+                      echo $row["extraText"];
+                      echo "</p></tr>
                 <tr class='";
-                    echo rowColor($row["status"]);
-                    echo "'>
+                      echo rowColor($row["status"]);
+                      echo "'>
                   <form method='post'>
                   <td></td>
                   <td></td>
@@ -195,111 +207,112 @@ include 'ldapcfg.php';
                   <td></td>
                   <td colspan='2'>Angenommen</td>
                   <td><input type='radio' name='group1' value='accep1' required";
-                    if (channelChecked($row["channelFacebookSite"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (channelChecked($row["channelFacebookSite"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group2' value='accep2' required";
-                    if (channelChecked($row["channelFacebookGroups"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (channelChecked($row["channelFacebookGroups"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group3' value='accep3' required";
-                    if (channelChecked($row["channelFacebookEvents"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (channelChecked($row["channelFacebookEvents"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group4' value='accep4' required";
-                    if (channelChecked($row["channelTwitter"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (channelChecked($row["channelTwitter"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group5' value='accep5' required";
-                    if (channelChecked($row["channelWebsite"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (channelChecked($row["channelWebsite"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group6' value='accep6' required";
-                    if (channelChecked($row["channelInfoScreen"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (channelChecked($row["channelInfoScreen"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group7' value='accep7' required";
-                    if (channelChecked($row["channelNewsletter"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (channelChecked($row["channelNewsletter"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group8' value='accep8' required";
-                    if (channelChecked($row["channelPosters"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (channelChecked($row["channelPosters"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                 </tr>
                 <tr class='";
-                    echo rowColor($row["status"]);
-                    echo "'>
+                      echo rowColor($row["status"]);
+                      echo "'>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td colspan='2'>Abgelehnt</td>
                   <td><input type='radio' name='group1' required";
-                    if (!channelChecked($row["channelFacebookSite"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (!channelChecked($row["channelFacebookSite"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group2' required";
-                    if (!channelChecked($row["channelFacebookGroups"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (!channelChecked($row["channelFacebookGroups"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group3' required";
-                    if (!channelChecked($row["channelFacebookEvents"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (!channelChecked($row["channelFacebookEvents"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group4' required";
-                    if (!channelChecked($row["channelTwitter"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (!channelChecked($row["channelTwitter"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group5' required";
-                    if (!channelChecked($row["channelWebsite"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (!channelChecked($row["channelWebsite"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group6' required";
-                    if (!channelChecked($row["channelInfoScreen"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (!channelChecked($row["channelInfoScreen"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group7' required";
-                    if (!channelChecked($row["channelNewsletter"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (!channelChecked($row["channelNewsletter"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   <td><input type='radio' name='group8' required";
-                    if (!channelChecked($row["channelPosters"])) {
-                        echo " checked='checked'";
-                    }
-                    echo "></td>
+                      if (!channelChecked($row["channelPosters"])) {
+                          echo " checked='checked'";
+                      }
+                      echo "></td>
                   </tr>
                   <tr class='";
-                    echo rowColor($row["status"]);
-                    echo "'>
+                      echo rowColor($row["status"]);
+                      echo "'>
                   <td></td>
                   <td colspan='13'>
                   <input type='hidden' name='update_id' value='";
-                    echo $row["id"];
-                    echo "' />
+                      echo $row["id"];
+                      echo "' />
                   </form>
               </td>
             </tr>
           </tbody>";
-                    $numberOfRow += 1;
-                }
-            }
-        }
+                      $numberOfRow += 1;
+                  }
+              }
+          }
+      }
         ?>
 
       </table>

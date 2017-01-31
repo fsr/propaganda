@@ -31,8 +31,10 @@ textarea {
 }
 
 h1 {
-  margin-left: 8%;
   margin-bottom: 5%;
+}
+.hantrag {
+  margin-left: 8%;
 }
 
 td[aria-expanded=true] .fa-chevron-right {

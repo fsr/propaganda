@@ -270,7 +270,7 @@ include 'ldapcfg.php';
         }
         ?>
 
-        <h1>Antrag auf Propaganda</h1>
+        <h1 class="hantrag">Antrag auf Propaganda</h1>
         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
             <div class="form-group">
                 <label for="titel" class="col-sm-3 control-label">Betreff:</label>
