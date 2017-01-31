@@ -130,7 +130,6 @@ include 'ldapcfg.php';
           $result = $statement->execute();
 
           while ($row = $result->fetchArray()) {
-              print_r($row);
               if (!empty($row)) {
                   if ($username == $row['applicantMailAdress']) {
                       echo "<tr class='";
