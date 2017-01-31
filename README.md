@@ -1,11 +1,14 @@
-# propaganda
-Propagandasystem für den FSR
+# Propagandasystem¹
+
+Öffentlichkeitsarbeitstool für den iFSR
 
 ## Beschreibung
 
-Das Propagandasystem soll ein Websystem für den internen Gebrauch im FSR sein um Öffentlichkeitsarbeit zu organisieren.
-Neue Werbemaßnahmen oder verbreitungswürdige News können von Mitgliedern in das System eingetragen werden und das Öffentlichkeitsarbeit-Team kann diese abarbeiten. Es werden Texte und Materialen zur Verfügung gestellt sowie gewählt welche Kanäle des FSR genutzt werden sollen (soziale Netzwerke, Newsletter, Webseite, etc.). Die ÖA-AG kann entsprechende Einträge als erledigt markieren und das System dient im Nachhinein auch als Archiv.
+Das Propagandasystem ist ein Websystem für den internen Gebrauch im iFSR. Dadurch soll die Organisation der Öffentlichkeitsarbeit erleichtert werden.
+Neue Werbemaßnahmen oder verbreitungswürdige News können von Mitgliedern in das System eingetragen werden und diese können dann vom Öffentlichkeitsarbeit-Team abgearbeitet werden. Beim einem Antrag sollten sowohl Texte, also auch Materialien zur Verfügung gestellt werden. Außerdem soll festgestellt werden, welche Kanäle des iFSR genutzt werden sollen. Die ÖA-AG kann entsprechende Einträge als erledigt markieren. Das System dient auch als Archiv.
 
-## aktueller Status
+## Aktueller Status
 
-Bisher gibt es nur ein statisches Frontend. Die Backend-Entwicklung dauert im Moment noch an. Bei Mitarbeits-Interesse bitte mit @heisig absprechen da schon Pläne existieren.
+Das System wurde Anfang Januar live gestellt. Verbesserungsvorschläge können als Issues bei Github eingereicht werden.
+
+[1] Der Name ist rein ironisch.
