@@ -75,7 +75,7 @@ include 'ldapcfg.php';
 
         if ($rew['count(*)'] == 0) {
             echo "<div role='danger' class='alert alert-danger'>";
-            echo "<strong>Es wurden bisher keine Anträge eingereicht!</strong><br/>Sie werden per Mail benachrichtigt sobald ein Antrag eingegangen ist.";
+            echo "<strong>Es wurden bisher keine Anträge eingereicht!</strong><br/>Sie werden per Mail benachrichtigt, sobald ein Antrag eingegangen ist.";
             echo "</div>";
         } else {
             echo '

@@ -75,7 +75,7 @@ include 'ldapcfg.php';
 
       if ($rew['count(*)'] == 0) {
           echo "<div role='danger' class='alert alert-danger'>";
-          echo "<strong>Sie haben bisher keine Anträge eingereicht!</strong><br/>Klicken sie <a class='site' href='antrag.php'>hier</a> um einen Antrag einzureichen.";
+          echo "<strong>Sie haben bisher keine Anträge eingereicht!</strong><br/>Klicken Sie <a class='site' href='antrag.php'>hier</a> um einen Antrag einzureichen.";
           echo "</div>";
       } else {
           echo '

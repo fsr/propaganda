@@ -75,7 +75,7 @@ include 'ldapcfg.php';
 
         if ($rew['count(*)'] == 0) {
             echo "<div role='danger' class='alert alert-danger'>";
-            echo "<strong>Es wurden bisher keine Anträge archiviert!</strong><br/>Sie werden per Mail benachrichtigt sobald Anträge archiviert wurden.";
+            echo "<strong>Es wurden bisher keine Anträge archiviert!</strong><br/>Sie werden per Mail benachrichtigt, sobald Anträge archiviert wurden.";
             echo "</div>";
         } else {
             echo '
