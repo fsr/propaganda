@@ -61,7 +61,7 @@ if(isset($_SESSION['user'])) {
   <div class="col-xs-6">
       <form class="form-signin" method="post" action="">
         <label class="sr-only">Username</label>
-        <input type="input" name="username" class="form-control" placeholder="Username" required autofocus/>
+        <input type="text" name="username" class="form-control" placeholder="Username" required autofocus/>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password" class="form-control" placeholder="Password" required/><br/><br/>
         <button class="btn btn-lg btn-primary btn-block" name="senden" type="submit">Sign in</button>
