@@ -1,7 +1,7 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-include ('login.php');
+include 'login.php';
 
 // No need to display a login page to an already logged in user
 if(isset($_SESSION['user'])) {
