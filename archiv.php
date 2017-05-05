@@ -3,6 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include 'ldapcfg.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="de">
   <head>
@@ -97,15 +98,6 @@ include 'ldapcfg.php';
             <th>Plakate</th>
           </tr>';
 
-            function channelIcon($channelStatus)
-            {
-                if ($channelStatus==1) {
-                    return "✔";
-                } else {
-                    return "✗";
-                }
-            }
-
           if (isset($_POST["delete_id"])) {
                 $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
                 $delete->bindValue(':id', $_POST['delete_id']);
@@ -118,7 +110,7 @@ include 'ldapcfg.php';
 
           //todo = ROT, inProgress = GELB, done = grün
           $statement = $db->prepare("SELECT * FROM items WHERE archived = 1");
-            $result = $statement->execute();
+          $result = $statement->execute();
 
             while ($row = $result->fetchArray()) {
                 if (!empty($row)) {

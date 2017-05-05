@@ -97,35 +97,6 @@ include 'ldapcfg.php';
           <th>Plakate</th>
         </tr>';
 
-          function rowColor($status)
-          {
-              if ($status == "todo") {
-                  return "danger";//Rot
-              } elseif ($status == "inProgress") {
-                  return "warning";//Gelb
-              } elseif ($status == "done") {
-                  return "success";//Grün
-              }
-          }
-
-          function channelIcon($channelStatus)
-          {
-              if ($channelStatus==1) {
-                  return "✔";
-              } else {
-                  return "✗";
-              }
-          }
-
-          function channelChecked($channelStatus)
-          {
-              if ($channelStatus==1) {
-                  return true;
-              } else {
-                  return false;
-              }
-          }
-
           $statement = $db->prepare("SELECT * FROM items WHERE archived = 0");
           $result = $statement->execute();
 

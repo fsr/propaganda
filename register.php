@@ -193,36 +193,6 @@ include 'ldapcfg.php';
                 }
             }
 
-            function rowColor($status)
-            {
-                if ($status == "todo") {
-                    return "danger";//Rot
-                } elseif ($status == "inProgress") {
-                    return "warning";//Gelb
-                } elseif ($status == "done") {
-                    return "success";//Grün
-                }
-            }
-
-            function channelIcon($channelStatus)
-            {
-                if ($channelStatus==1) {
-                    return "✔";
-                } else {
-                    return "✗";
-                }
-            }
-
-            function channelChecked($channelStatus)
-            {
-                if ($channelStatus==1) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-
-
             if (isset($_POST["delete_id"])) {
                 $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
                 $delete->bindValue(':id', $_POST['delete_id']);

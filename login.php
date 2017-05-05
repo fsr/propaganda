@@ -1,4 +1,14 @@
 <?php
+
+function redirectOnLogin(){
+    if(isset($_SESSION['user'])) {
+        $url ='antrag.php';
+        ob_end_clean(); // Delete the buffer
+        header("Location: $url");
+        exit(); #quit
+    }
+}
+
 session_start();
 if (isset($_POST['username'])) {
     $username = $_POST['username'];

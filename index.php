@@ -2,14 +2,9 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include 'login.php';
-
 // No need to display a login page to an already logged in user
-if(isset($_SESSION['user'])) {
-    $url ='antrag.php';
-    ob_end_clean(); // Delete the buffer
-    header("Location: $url");
-    exit(); #quit
-}
+redirectOnLogin();
+
 ?>
 <!DOCTYPE html>
 <html lang="de">
