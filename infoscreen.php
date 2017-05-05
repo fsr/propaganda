@@ -2,6 +2,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 include 'ldapcfg.php';
+include 'Parsedown.php';
 
 function rowColor($status) {
     if ($status == 0) {
@@ -84,6 +85,9 @@ function rowColor($status) {
           </tr>
 
         <?php
+        // initialize the Markdown parser
+        $Parsedown = new Parsedown();
+
 	    $db = new SQLite3("infoscreen.sqlite");
 	    $db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, headline TEXT, content TEXT, image TEXT, visibility INTEGER);");
 
@@ -112,7 +116,7 @@ function rowColor($status) {
                         <td><a href='". $row["image"] ."'>". $row["image"] ."</a></td>";
                     } else {
                         echo "<td>Text:</td>
-                        <td>". $row["content"] ."</td>";
+                        <td>". $Parsedown->text($row["content"]) ."</td>";
                     }
                     ?>
                 </tr>
