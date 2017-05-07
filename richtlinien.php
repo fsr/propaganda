@@ -28,7 +28,7 @@ include 'ldapcfg.php';
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/font-awesome-4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
@@ -94,7 +94,7 @@ include 'ldapcfg.php';
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="vendor/jquery-1.11.3.min.js"></script>
     <script src="vendor/bootstrap-3.3.5-dist/js/bootstrap.min.js"></script>
   </body>
 </html>
