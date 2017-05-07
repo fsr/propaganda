@@ -4,6 +4,17 @@ ini_set('display_errors', 1);
 include 'ldapcfg.php';
 include 'Parsedown.php';
 
+// initialize the database connection
+$db = new SQLite3("infoscreen.sqlite");
+
+// if a change to the visibility of certain objects was made: apply it
+if (isset($_POST["changeVisibility"])) {
+    $statement = $db->prepare('UPDATE items SET visibility=:visibility WHERE id = :id;');
+	$statement->bindValue(':id', $_POST['editedId']);
+	$statement->bindValue(':visibility', $_POST['new_visibility']);
+	$result = $statement->execute();
+}
+
 function rowColor($status) {
     if ($status == 0) {
         return "danger"; //Rot
@@ -75,6 +86,18 @@ function rowColor($status) {
 
     <div class="container">
       <div class="antrag col-md-12">
+        <?php 
+            // report whether database update went well
+            if (isset($_POST["changeVisibility"])) {
+                if ($result == false) {
+                    echo "<div role='danger' class='alert alert-danger'><strong>Beim Verarbeiten der Datenbankabfrage ist ein Fehler aufgetreten!</strong></div>";
+                } else {
+                    echo "<div role='success' class='success alert-success'>Daten erfolgreich aktualisiert!</div>";
+                }
+            }
+            
+        ?>
+
         <h1>Infoscreen Backend</h1>
 
         <table class="table">
@@ -88,7 +111,6 @@ function rowColor($status) {
         // initialize the Markdown parser
         $Parsedown = new Parsedown();
 
-	    $db = new SQLite3("infoscreen.sqlite");
 	    $db->exec("CREATE TABLE IF NOT EXISTS items (id INTEGER PRIMARY KEY, headline TEXT, content TEXT, image TEXT, visibility INTEGER);");
 
         $res = $db->query("SELECT * FROM items;");
@@ -112,13 +134,27 @@ function rowColor($status) {
                     <td></td>
                     <?php
                     if ($row["image"] != "") {
-                        echo "<td>Bildlink:</td>
+                        echo "<td><b>Bildlink:</b></td>
                         <td><a href='". $row["image"] ."'>". $row["image"] ."</a></td>";
                     } else {
-                        echo "<td>Text:</td>
+                        echo "<td><b>Text:</b></td>
                         <td>". $Parsedown->text($row["content"]) ."</td>";
                     }
                     ?>
+                </tr>
+                <?php echo "<tr class='". rowColor($row["visibility"]) ."'>"; ?>
+                    <td></td>
+                    <td><b>Sichtbar?</b></td>
+                    <td><form action="infoscreen.php" method="POST"><?php
+                        echo "<input type='hidden' name='editedId' value='". $row["id"] ."' />";
+                        if ($row["visibility"] == 1) {
+                            echo "<label>Ja <input type='radio' name='new_visibility' value='1' checked='checked' /></label> &nbsp;&nbsp;&nbsp;&nbsp; <label>Nein <input type='radio' name='new_visibility' value='0' /></label>";
+                        } else {
+                            echo "<label>Ja <input type='radio' name='new_visibility' value='1' /></label> &nbsp;&nbsp;&nbsp;&nbsp; <label>Nein <input type='radio' name='new_visibility' value='0' checked='checked' /></label>";
+                        }
+                    ?><br />
+                    <button class='btn btn-default pull-right' type='submit' name='changeVisibility'>Sichtbarkeit aktualisieren</button>
+                    </form><?php echo "<a href='infoscreen-entry.php?id=". $row["id"] ."'>Eintrag bearbeiten</a>"; ?></td>
                 </tr>
             </tbody>
 
@@ -342,6 +378,11 @@ function rowColor($status) {
         }
         */
           ?>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><a href="infoscreen-entry.php?new" class="btn btn-default pull-right">Neuen Eintrag anlegen</a></td>
+          </tr>
 
         </table>
       </div>
