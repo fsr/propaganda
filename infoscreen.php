@@ -97,13 +97,13 @@ function rowColor($status) {
                 if ($result == false) {
                     echo "<div role='danger' class='alert alert-danger'><strong>Beim Verarbeiten der Datenbankabfrage ist ein Fehler aufgetreten!</strong></div>";
                 } else {
-                    echo "<div role='success' class='success alert-success'>Sichtbarkeit erfolgreich aktualisiert!</div>";
+                    echo "<div role='success' class='alert alert-success'>Sichtbarkeit erfolgreich aktualisiert!</div>";
                 }
             } else if (isset($_POST["deleteEntry"])) {
                 if ($result == false) {
                     echo "<div role='danger' class='alert alert-danger'><strong>Beim Löschen ist ein Fehler aufgetreten!</strong></div>";
                 } else {
-                    echo "<div role='success' class='success alert-success'>Eintrag erfolgreich gelöscht!</div>";
+                    echo "<div role='success' class='alert alert-success'>Eintrag erfolgreich gelöscht!</div>";
                 }
             }
             

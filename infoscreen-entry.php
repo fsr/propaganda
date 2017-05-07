@@ -115,7 +115,7 @@ if (isset($_GET["id"])) {
         $visibility = 1;
 
         // if initial values exist (edit), load them
-        if ($originalEntry != false) {
+        if (isset($originalEntry) && $originalEntry != false) {
             $id = $originalEntry["id"];
             $headline = $originalEntry["headline"];
             $content = $originalEntry["content"];
