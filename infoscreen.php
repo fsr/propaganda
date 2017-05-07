@@ -19,6 +19,14 @@ if(isset($_POST['deleteEntry'])) {
 		$statement->bindValue(':id', $_POST['deleteId']);
 		$result = $statement->execute();
 }
+
+function displayState($status){
+    if ($status == 0) {
+        return "danger";//Rot
+    } else {
+        return "success";//Grün
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -120,7 +128,7 @@ if(isset($_POST['deleteEntry'])) {
         
         while ($row = $res->fetchArray()) { ?>
 
-            <tr class="<?php echo rowColor($row["visibility"]); ?>">
+            <tr class="<?php echo displayState($row["visibility"]); ?>">
                 <?php echo "<td data-toggle='collapse' data-target='#tr". $row["id"] ."' aria-expanded='false' aria-controls='#tr". $row["id"] ."'>"; ?>
                     <i class='fa fa-fw fa-chevron-right'></i>
                     <i class='fa fa-fw fa-chevron-down'></i>
@@ -133,7 +141,7 @@ if(isset($_POST['deleteEntry'])) {
                 </td>
             </tr>
             <?php echo "<tbody id='tr". $row["id"] ."' class='collapse'>
-                <tr class='". rowColor($row["visibility"]) ."'>"; ?>
+                <tr class='". displayState($row["visibility"]) ."'>"; ?>
                     <td></td>
                     <?php
                     if ($row["image"] != "") {
@@ -145,7 +153,7 @@ if(isset($_POST['deleteEntry'])) {
                     }
                     ?>
                 </tr>
-                <?php echo "<tr class='". rowColor($row["visibility"]) ."'>"; ?>
+                <?php echo "<tr class='". displayState($row["visibility"]) ."'>"; ?>
                     <td></td>
                     <td><b>Sichtbar?</b></td>
                     <td><form action="infoscreen.php" method="POST"><?php
