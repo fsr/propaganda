@@ -19,14 +19,6 @@ if(isset($_POST['deleteEntry'])) {
 		$statement->bindValue(':id', $_POST['deleteId']);
 		$result = $statement->execute();
 }
-
-function rowColor($status) {
-    if ($status == 0) {
-        return "danger"; //Rot
-    } elseif ($status == 1) {
-        return "success"; //Grün
-    }
-}
 ?>
 
 <!DOCTYPE html>

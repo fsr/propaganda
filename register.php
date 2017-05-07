@@ -51,6 +51,7 @@ include 'ldapcfg.php';
             echo '<li><a href="mantrag.php">Meine Anträge</a></li>';
             if (in_array($username, $memberarray)) {
                 echo '<li class="active"><a href="register.php">Register</a></li>
+            <li><a href="infoscreen.php">Infoscreen</a></li>
             <li><a href="archiv.php">Archiv</a></li>
             <li><a href="richtlinien.php">Richtlinien</a></li>';
             }
