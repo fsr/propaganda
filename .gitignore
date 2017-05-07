@@ -1,3 +1,6 @@
+items.sqlite
+infoscreen.sqlite
+.vagrant
 
 # Created by https://www.gitignore.io/api/intellij,phpstorm
 

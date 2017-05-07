@@ -148,7 +148,7 @@ if (isset($_GET["id"])) {
             <div class="form-group">
                 <label for="new_content" class="col-sm-3 control-label">Text:</label>
                 <div class="col-sm-9 input-group">
-                    <textarea name="new_content" class="form-control" rows="4" placeholder="Anzeigetext"><?php echo $content; ?></textarea>
+                    <textarea name="new_content" class="form-control" rows="4" placeholder="Anzeigetext (unterstützt Markdown!)"><?php echo $content; ?></textarea>
                 </div>
             </div>
 
