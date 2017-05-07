@@ -14,6 +14,11 @@ if (isset($_POST["changeVisibility"])) {
 	$statement->bindValue(':visibility', $_POST['new_visibility']);
 	$result = $statement->execute();
 }
+if(isset($_POST['deleteEntry'])) {
+		$statement = $db->prepare('DELETE FROM items WHERE id = :id;');
+		$statement->bindValue(':id', $_POST['deleteId']);
+		$result = $statement->execute();
+}
 
 function rowColor($status) {
     if ($status == 0) {
@@ -92,7 +97,13 @@ function rowColor($status) {
                 if ($result == false) {
                     echo "<div role='danger' class='alert alert-danger'><strong>Beim Verarbeiten der Datenbankabfrage ist ein Fehler aufgetreten!</strong></div>";
                 } else {
-                    echo "<div role='success' class='success alert-success'>Daten erfolgreich aktualisiert!</div>";
+                    echo "<div role='success' class='success alert-success'>Sichtbarkeit erfolgreich aktualisiert!</div>";
+                }
+            } else if (isset($_POST["deleteEntry"])) {
+                if ($result == false) {
+                    echo "<div role='danger' class='alert alert-danger'><strong>Beim Löschen ist ein Fehler aufgetreten!</strong></div>";
+                } else {
+                    echo "<div role='success' class='success alert-success'>Eintrag erfolgreich gelöscht!</div>";
                 }
             }
             
@@ -154,7 +165,11 @@ function rowColor($status) {
                         }
                     ?><br />
                     <button class='btn btn-default pull-right' type='submit' name='changeVisibility'>Sichtbarkeit aktualisieren</button>
-                    </form><?php echo "<a href='infoscreen-entry.php?id=". $row["id"] ."'>Eintrag bearbeiten</a>"; ?></td>
+                    </form><?php echo "<a href='infoscreen-entry.php?id=". $row["id"] ."' class='btn btn-default pull-right'>Eintrag bearbeiten</a>
+                    <form action='infoscreen.php' method='POST'>
+                        <input type='hidden' name='deleteId' value='". $row["id"] ."' />
+                        <button class='btn btn-default pull-right' type='submit' name='deleteEntry'>Eintrag löschen</button>
+                    </form>"; ?></td>
                 </tr>
             </tbody>
 
