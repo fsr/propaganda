@@ -198,40 +198,40 @@ include 'ldapcfg.php';
                 $delete = $db->prepare('DELETE FROM items WHERE id = :id;');
                 $delete->bindValue(':id', $_POST['delete_id']);
                 $result = $delete->execute();
-                $smail = $username ."@ifsr.de";
-                $message = "Hey Team,\nthis is your Propaganda system!\n\nSomeone deleted a Request!\n\nYou can check it out at ".$page;
-                $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-                mail($email, '[FSR-ÖA] A Request was deleted from ' . $smail, $message, $header);
+                // $smail = $username ."@ifsr.de";
+                // $message = "Hey Team,\nthis is your Propaganda system!\n\nSomeone deleted a Request!\n\nYou can check it out at ".$page;
+                // $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+                // mail($email, '[FSR-ÖA] A Request was deleted from ' . $smail, $message, $header);
             }
 
             if (isset($_POST["archive_id"])) {
                 $archive = $db->prepare('UPDATE items SET archived = 1 WHERE id = :id;');
                 $archive->bindValue(':id', $_POST['archive_id']);
                 $result = $archive->execute();
-                $smail = $username ."@ifsr.de";
-                $message = "Hey Team,\nthis is your Propaganda system!\n\nSomeone archived a Request!\n\nYou can check it out at ".$page;
-                $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-                mail($email, '[FSR-ÖA] A Request was archived from ' . $smail, $message, $header);
+                // $smail = $username ."@ifsr.de";
+                // $message = "Hey Team,\nthis is your Propaganda system!\n\nSomeone archived a Request!\n\nYou can check it out at ".$page;
+                // $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+                // mail($email, '[FSR-ÖA] A Request was archived from ' . $smail, $message, $header);
             }
 
             if (isset($_POST["progress_id"])) {
                 $progress = $db->prepare('UPDATE items SET status = "inProgress" WHERE id = :id;');
                 $progress->bindValue(':id', $_POST['progress_id']);
                 $progressexecute = $progress->execute();
-                $smail = $username ."@ifsr.de";
-                $message = "Hey Team,\nthis is your Propaganda system!\n\nA request was tagged as 'in Progress'!\n\nYou can check it out at ".$page;
-                $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-                mail($email, '[FSR-ÖA] A Request was tagged as inProgress from ' . $smail, $message, $header);
+                // $smail = $username ."@ifsr.de";
+                // $message = "Hey Team,\nthis is your Propaganda system!\n\nA request was tagged as 'in Progress'!\n\nYou can check it out at ".$page;
+                // $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+                // mail($email, '[FSR-ÖA] A Request was tagged as inProgress from ' . $smail, $message, $header);
             }
 
             if (isset($_POST["done_id"])) {
                 $done = $db->prepare('UPDATE items SET status = "done" WHERE id = :id;');
                 $done->bindValue(':id', $_POST['done_id']);
                 $doneexecute = $done->execute();
-                $smail = $username ."@ifsr.de";
-                $message = "Hey Team,\nthis is your Propaganda system!\n\nA request was tagged as 'Done' !\n\nYou can check it out at ".$page;
-                $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-                mail($email, '[FSR-ÖA] A Request was tagged as done from ' . $smail, $message, $header);
+                // $smail = $username ."@ifsr.de";
+                // $message = "Hey Team,\nthis is your Propaganda system!\n\nA request was tagged as 'Done' !\n\nYou can check it out at ".$page;
+                // $header = 'From: '.$smail . "\r\n" . 'Reply-To: '.$smail . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+                // mail($email, '[FSR-ÖA] A Request was tagged as done from ' . $smail, $message, $header);
             }
 
             $statement = $db->prepare("SELECT * FROM items WHERE archived = 0");
