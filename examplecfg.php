@@ -94,6 +94,17 @@ or die('Could not bind!<meta http-equiv="refresh" content="3; URL=index.php"/>')
       for ($i=0; $i<$group["count"]; $i++) {
           $memberarray = $group[$i]["memberuid"];
       }
+      $admincn = "cn=admin";
+      $admins = ldap_search($ldapconn, $propagandadn, $admincn);
+      $group = ldap_get_entries($ldapconn, $admins);
+      for ($i=0; $i<$group["count"]; $i++) {
+          $adminarray = $group[$i]["memberuid"];
+      }
+      for ($i=0; $i < $adminarray["count"]; $i++) {
+          $memberarray[] = $adminarray[$i];
+      }
+      $memberarray["count"] += $adminarray["count"];
+
 
       ldap_unbind($ldapconn);
   }
